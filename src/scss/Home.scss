@@ -1,0 +1,18 @@
+.homeContainer {
+  width: 1920px;
+  height: 470px;
+  opacity: 0.1;
+  background: linear-gradient(90deg, #e61a1a 0%, #1940ca 100%);
+  .layout_fix{
+    opacity: 0;
+  }
+  .homeSns{
+    display: flex;
+    flex-direction: column;
+    a{
+        width: 40px;
+        height: 40px;
+        background-color: #3A4152;
+    }
+  }
+}

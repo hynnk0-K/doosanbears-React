@@ -1,0 +1,7 @@
+*{font-family: "Pretendard"; box-sizing: border-box; background-color: #181928;}
+
+.layout_fix {
+  max-width: 1240px;
+  height: 100%;
+  padding: 0 20px;
+}
