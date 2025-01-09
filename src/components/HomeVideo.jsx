@@ -1,20 +1,20 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
 
 const HomeVideo = () => {
-    return (
-        <div className='homeContainer'>
-            <div className="homeVideo layout_fix">
+  return (
+    <div className="homeVideo">
 
-            </div>
-            <div className="homeSns">
-                <Link className='facebook' to="https://www.facebook.com/1982doosanbears"></Link>
-                <Link to="https://x.com/doosanbears1982?mx=2"></Link>
-                <Link to="https://www.instagram.com/doosanbears.1982/#"></Link>
-                <Link to="https://www.youtube.com/channel/UCsebzRfMhwYfjeBIxNX1brg"></Link>
-            </div>
-        </div>
-    );
+      <iframe
+        // height={}
+        src="https://www.youtube.com/embed/wcwCaRci-Jc?version=3&vq=hd1080&autoplay=1&mute=1&loop=1&playlist=wcwCaRci-Jc"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+        allowfullscreen
+      ></iframe>
+      {/* &autoplay=1&mute=1&loop=1 */}
+    </div>
+  );
 };
 
 export default HomeVideo;

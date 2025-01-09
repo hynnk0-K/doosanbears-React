@@ -1,7 +1,51 @@
-*{font-family: "Pretendard"; box-sizing: border-box; background-color: #181928;}
+*{font-family: "Pretendard"; box-sizing: border-box; }
 
 .layout_fix {
   max-width: 1240px;
+  width: 1240px;
   height: 100%;
+  margin: 0 auto;
   padding: 0 20px;
+}
+
+#root{
+  background-color: #181928;
+}
+
+
+[class~=red]{
+  background-color: #E4203E;
+}
+[class~=font_red]{
+  color: #E4203E;
+}
+[class~=lightNavy]{
+  background-color: #272B3A;
+}
+[class~=heading]{
+  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+[class~=title]{
+  color: #fff;
+  font-size: 26px;
+  font-weight: bold;
+}
+[class~=inner_layout]{
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+::-webkit-scrollbar{
+  width: 8px;
+  height: 5px;
+}
+::-webkit-scrollbar-track{
+  background: #444;
+}
+::-webkit-scrollbar-thumb{
+  background-color: #888;
+  border-radius: 10px;
 }

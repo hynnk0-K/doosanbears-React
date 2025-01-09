@@ -25,7 +25,7 @@ const Navbar = () => {
             <Link to="/game">GAME</Link>
             <Link to="/stats">STATS</Link>
             <Link to="/ticket">TICKET</Link>
-            <Link to="/community">두런두런</Link>
+            {/* <Link to="/community">두런두런</Link> */}
           </div>
         </div>
         <div className="h_logo"></div>

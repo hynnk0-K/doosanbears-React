@@ -1,18 +1,167 @@
 .homeContainer {
-  width: 1920px;
-  height: 470px;
-  opacity: 0.1;
-  background: linear-gradient(90deg, #e61a1a 0%, #1940ca 100%);
-  .layout_fix{
-    opacity: 0;
+  max-width: 1920px;
+  height: 540px;
+  background-color: #181928;
+  position: relative;
+  .homeVideoBackground {
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    background: linear-gradient(90deg, #e61a1a 0%, #1940ca 100%);
+    position: absolute;
   }
-  .homeSns{
-    display: flex;
-    flex-direction: column;
-    a{
+  .homeSns {
+    padding: 131px 36px;
+    position: absolute;
+    right: 0;
+    z-index: 10;
+    .snsList {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: end;
+      li {
         width: 40px;
         height: 40px;
-        background-color: #3A4152;
+        padding: 8px;
+        border-radius: 20px;
+        background-color: #3a4152;
+        &:nth-child(2) {
+          padding: 11px;
+          img {
+            width: 18px;
+            height: 18px;
+          }
+        }
+        img {
+          width: 24px;
+          height: 24px;
+          background: none;
+        }
+        a {
+          width: 40px;
+          height: 40px;
+        }
+      }
     }
   }
+  .homeVideo {
+    width: 60rem;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    iframe {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9; /* 비율 유지 */
+    }
+  }
+}
+.home_score_schedule{
+  max-width: 1920px;
+  background-color: #181928;
+  margin-bottom: 70px;
+  .score{
+    margin: 0 auto;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    .scoreList{
+      width: 1200px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      li{
+        width: 220px;
+        padding: 20px 0;
+        color: #fff;
+        text-align: center;
+        border-radius: 5px;
+        p{
+          width: 220px;
+          margin-bottom: 8px;
+          font-size: 14px;
+        }
+        span{
+          font-size: 18px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  .schedule{
+    padding-bottom: 60px;
+    overflow-x: scroll;
+    h2{margin-bottom: 32px;}
+    .weekly_schedule{
+      margin-left: 20px;
+      >p{
+        margin-bottom: 12px;
+        font-size: 13px;
+        font-weight: 300;
+        color: #fff;
+      }
+      ul{
+        display: flex;
+        gap: 16px;
+        .weekly_schedule_content{
+          width: 342px;
+          padding: 45px 34px;
+          background-color: #272B3A;
+          border-radius: 5px;
+          position: relative;
+          .active{
+            width: 100%;
+            height: 10px;
+            border-radius: 5px 5px 0px 0px;
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+          .weekly_schedule_content_text{
+            border-bottom: 1px solid #666;
+            p.place{
+              font-size: 13px;
+              color: #888888;
+            }
+            h4{
+              margin-top: 8px;
+              font-size: 20px;
+            }
+            p.ticket{
+              margin: 10px 0;
+              font-size: 13px;
+              font-weight: 300;
+              color: #fff;
+            }
+          }
+          .weekly_schedule_content_img{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 45px;
+            img{
+              width: 114px;
+              height: 114px;
+            }
+            p{color: #fff;}
+          }
+        }
+      }
+    }
+  }
+
+}
+.home_BearsTV{
+ margin: 70px 0;
+ .heading{
+  >a{
+    color: #888888;
+    font-size: 13px;
+  }
+ }
+ .wrap{
+  
+ }
 }
