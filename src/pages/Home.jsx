@@ -148,8 +148,8 @@ const Home = () => {
             <h2 className="title">BEARS TV</h2>
             <Link to="https://www.youtube.com/@bearstv1982/videos">더보기</Link>
           </div>
-          <HomeBearsVideo />
         </div>
+        <HomeBearsVideo />
       </div>
     </>
   );

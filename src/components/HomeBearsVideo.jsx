@@ -1,88 +1,94 @@
-import React from "react";
-import Swiper from "swiper";
+import React, { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import YouTube from "react-youtube";
 import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+const videoIds = ["pvBm2rS86mU", "_s7XCWN6bBg", "K4_NczZmAWI", "2VSnLWb47yM"];
 
 const HomeBearsVideo = () => {
-  window.addEventListener("load", onLoadEvent);
-
-  let tag = document.createElement("script");
-  tag.src = "https://youtube.com/iframe_api";
-  let firstScriptTag = document.getElementsByTagName("script")[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-  let player = {};
-
-  function makeYoutube(id, link) {
-    player[id] = new YT.player(id, {
-      height: "315",
-      width: "560",
-      playerVars: { autoplay: 1, controls: 0 },
-      videoId: link,
-      events: {
-        onReady: onPlayerReady,
-      },
+  const [swiperRef, setSwiperRef] = useState(null);
+  const onSlideChange = (swiper) => {
+    // 모든 플레이어를 순회하며 일시정지
+    document.querySelectorAll("iframe").forEach((iframe) => {
+      iframe.contentWindow.postMessage(
+        '{"event":"command","func":"pauseVideo","args":""}',
+        "*"
+      );
     });
-    function onPlayerReady(event){
-        event.target.playVideo();
-    }
-  }
-
-  function youtubeOnClick(){
-    [].forEach.call(document.querySelectorAll('.youtube'), function(el, index){
-        el.addEventListener('click', function(){
-            let thisYoutubeLink = this.getAttribute('data-youtubeLink');
-            this.id = makeRandomId();
-            makeYoutube(this.id, thisYoutubeLink)
-        })
-    })
-  }
-
-  function onLoadEvent(){
-    youtubeOnClick();
-    mySwiper.on('slideChangeTransitionEnd', youtubeAllStop)
-  }
-
-  function youtubeAllStop(){
-    for(let youtube in player){
-        player[youtube].pauseVideo();
-    }
-  }
-
-  let makeRandomId = function(){
-    let text = '';
-    let possible  = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+=-';
-    
-    for(let i = 0; i < 11; i++){
-        test += possible.charAt(Math.floor(Math.random()*possible.length));
-    }
-    
-    return text;
-  }
+  };
 
   return (
+    <>
     <div className="swiper_container">
-      <div className="swiper_wrapper">
-        <div className="swiper-slide">
-          <div className="video-container">
-            <div className="youtube" data-id="pvBm2rS86mU"></div>
-          </div>
-        </div>
-        <div className="swiper-slide">
-          <div className="video-container">
-            <div className="youtube" data-id="_s7XCWN6bBg"></div>
-          </div>
-        </div>
-        <div className="swiper-slide">
-          <div className="video-container">
-            <div className="youtube" data-id="K4_NczZmAWI"></div>
-          </div>
-        </div>
-        <div className="swiper-button-prev"></div>
-        <div className="swiper-button-next"></div>
-        <div className="swiper-pagination"></div>
-      </div>
+      <Swiper
+        onSwiper={setSwiperRef}
+        spaceBetween={30}
+        slidesPerView={3}
+        centeredSlides={true}
+        initialSlide={2}
+        pagination={{ clickable: true }}
+        navigation={true}
+        modules={[Navigation]}
+        loop={true}
+        onSlideChange={onSlideChange}
+      >
+        {videoIds.map((videoId) => (
+          <SwiperSlide key={videoId}>
+            <YouTube
+              videoId={videoId}
+              opts={{ width: "516px", height: "350px" }}
+              showinfo={0}
+              controls={0}
+              autohide={1}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
+    </>
   );
 };
 
 export default HomeBearsVideo;
+
+
+
+{/* <div id="video_list" className="layout_fix">
+<ul className="video_list">
+  <li>
+    <Link></Link>
+    <img src="https://i.ytimg.com/vi/XkJqWiTSafY/sddefault.jpg" alt="" />
+  </li>
+  <li>
+    <Link></Link>
+    <img src="https://i.ytimg.com/vi/NYMrEyl2S-A/sddefault.jpg" alt="" />
+  </li>
+  <li>
+    <Link></Link>
+    <img src="https://i.ytimg.com/vi_webp/gWU93qOx5jg/sddefault.webp" alt="" />
+  </li>
+   <li>
+    <Link></Link>
+    <img src="https://i.ytimg.com/vi_webp/pR2oQve6p7U/sddefault.webp" alt="" />
+   </li>
+   <li>
+    <Link></Link>
+    <img src="https://i.ytimg.com/vi_webp/HlEdu7Ah3no/sddefault.webp" alt="" />
+   </li>
+  <li>
+    <Link></Link>
+    <img src="https://i.ytimg.com/vi_webp/ufNdSTGMh7U/sddefault.webp" alt="" />
+  </li>
+   <li>
+    <Link></Link>
+    <img src="https://i.ytimg.com/vi_webp/-_3GlCYq9pI/sddefault.webp" alt="" />
+   </li>
+   <li>
+    <Link></Link>
+    <img src="https://i.ytimg.com/vi/mTj1DRw_HHE/sddefault.jpg" alt="" />
+   </li>
+</ul>
+</div> */}
