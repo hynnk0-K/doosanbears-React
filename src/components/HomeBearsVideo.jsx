@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import YouTube from "react-youtube";
@@ -6,10 +6,17 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-const videoIds = ["pvBm2rS86mU", "_s7XCWN6bBg", "K4_NczZmAWI", "2VSnLWb47yM"];
+const videoIds = ["le_8PKRBaT0", "1fHwM49NXQ8", "UOaf0ir9ojc", "Z8-byDLKxyY"];
+// const modalVideoIds = [
+//   "XkJqWiTSafY", "NYMrEyl2S-A", "gWU93qOx5jg", "pR2oQve6p7U",
+//   "HlEdu7Ah3no", "ufNdSTGMh7U", "-_3GlCYq9pI", "mTj1DRw_HHE"
+// ];
+
 
 const HomeBearsVideo = () => {
-  const [swiperRef, setSwiperRef] = useState(null);
+  // const [swiperRef, setSwiperRef] = useState(null);
+  // const [isModalOpen, setModalOpen] = useState(Array(modalVideoIds.length).fill(false));
+
   const onSlideChange = (swiper) => {
     // 모든 플레이어를 순회하며 일시정지
     document.querySelectorAll("iframe").forEach((iframe) => {
@@ -20,75 +27,67 @@ const HomeBearsVideo = () => {
     });
   };
 
+  // const openModal = (index) => {
+  //   setModalOpen((prev) => prev.map((open, i) => (i === index ? true : open)));
+  // };
+
+  // const closeModal = (index) => {
+  //   setModalOpen((prev) => prev.map((open, i) => (i === index ? false : open)));
+  // };
+
   return (
     <>
-    <div className="swiper_container">
-      <Swiper
-        onSwiper={setSwiperRef}
-        spaceBetween={30}
-        slidesPerView={3}
-        centeredSlides={true}
-        initialSlide={2}
-        pagination={{ clickable: true }}
-        navigation={true}
-        modules={[Navigation]}
-        loop={true}
-        onSlideChange={onSlideChange}
-      >
-        {videoIds.map((videoId) => (
-          <SwiperSlide key={videoId}>
-            <YouTube
+      <div className="swiper_container">
+        <Swiper
+          // onSwiper={setSwiperRef}
+          spaceBetween={30}
+          slidesPerView={3}
+          centeredSlides={true}
+          initialSlide={1}
+          pagination={{ clickable: true }}
+          navigation={true}
+          modules={[Navigation]}
+          loop={true}
+          onSlideChange={onSlideChange}
+        >
+          {videoIds.map((videoId) => (
+            <SwiperSlide key={videoId}>
+              <YouTube
+                videoId={videoId}
+                opts={{ width: "516px", height: "350px" }}
+                showinfo={0}
+                controls={0}
+                autohide={1}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+      {/* <div id="video_list" className="layout_fix">
+        <ul className="video_list">
+        {modalVideoIds.map((videoId, index) => (
+          <li key={videoId}>
+            <ModalVideo 
+              channel="youtube"
+              youtube={{ mute: 0, autoplay: 0 }}
+              isOpen={isModalOpen[index]}
               videoId={videoId}
-              opts={{ width: "516px", height: "350px" }}
-              showinfo={0}
-              controls={0}
-              autohide={1}
+              onClose={() => closeModal(index)}
             />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-    </div>
+            <button className="btn-primary" onClick={() => openModal(index)}>
+                VIEW DEMO
+              </button>
+              <img
+                src={`https://i.ytimg.com/vi/${videoId}/sddefault.jpg`}
+                alt={`Video thumbnail for ${videoId}`}
+              />
+          </li>
+        )
+      )}
+        </ul>
+      </div> */}
     </>
   );
 };
 
 export default HomeBearsVideo;
-
-
-
-{/* <div id="video_list" className="layout_fix">
-<ul className="video_list">
-  <li>
-    <Link></Link>
-    <img src="https://i.ytimg.com/vi/XkJqWiTSafY/sddefault.jpg" alt="" />
-  </li>
-  <li>
-    <Link></Link>
-    <img src="https://i.ytimg.com/vi/NYMrEyl2S-A/sddefault.jpg" alt="" />
-  </li>
-  <li>
-    <Link></Link>
-    <img src="https://i.ytimg.com/vi_webp/gWU93qOx5jg/sddefault.webp" alt="" />
-  </li>
-   <li>
-    <Link></Link>
-    <img src="https://i.ytimg.com/vi_webp/pR2oQve6p7U/sddefault.webp" alt="" />
-   </li>
-   <li>
-    <Link></Link>
-    <img src="https://i.ytimg.com/vi_webp/HlEdu7Ah3no/sddefault.webp" alt="" />
-   </li>
-  <li>
-    <Link></Link>
-    <img src="https://i.ytimg.com/vi_webp/ufNdSTGMh7U/sddefault.webp" alt="" />
-  </li>
-   <li>
-    <Link></Link>
-    <img src="https://i.ytimg.com/vi_webp/-_3GlCYq9pI/sddefault.webp" alt="" />
-   </li>
-   <li>
-    <Link></Link>
-    <img src="https://i.ytimg.com/vi/mTj1DRw_HHE/sddefault.jpg" alt="" />
-   </li>
-</ul>
-</div> */}

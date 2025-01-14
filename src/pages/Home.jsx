@@ -46,9 +46,9 @@ const Home = () => {
               <li className="weekly_schedule_content lightNavy">
                 <div className="red active"></div>
                 <div className="weekly_schedule_content_text">
-                  <p className="place">고척</p>
-                  <h4 className="font_red">2024.09.10(화) 18:30</h4>
-                  <p className="ticket">예매중</p>
+                  <p className="place">인천</p>
+                  <h4 className="font_red">2025.03.22(토) 14:00</h4>
+                  <p className="ticket">경기전</p>
                 </div>
                 <div className="weekly_schedule_content_img">
                   <img
@@ -57,17 +57,17 @@ const Home = () => {
                   />
                   <p>vs</p>
                   <img
-                    src={process.env.PUBLIC_URL + "./images/logo_NC.png"}
-                    alt="ncLogo"
+                    src={process.env.PUBLIC_URL + "./images/logo_SSG.png"}
+                    alt="ssgLogo"
                   />
                 </div>
               </li>
               <li className="weekly_schedule_content lightNavy">
                 <div className="red active"></div>
                 <div className="weekly_schedule_content_text">
-                  <p className="place">고척</p>
-                  <h4 className="font_red">2024.09.10(화) 18:30</h4>
-                  <p className="ticket">예매중</p>
+                  <p className="place">인천</p>
+                  <h4 className="font_red">2025.03.23(일) 14:00</h4>
+                  <p className="ticket">경기전</p>
                 </div>
                 <div className="weekly_schedule_content_img">
                   <img
@@ -76,17 +76,17 @@ const Home = () => {
                   />
                   <p>vs</p>
                   <img
-                    src={process.env.PUBLIC_URL + "./images/logo_NC.png"}
-                    alt="ncLogo"
+                    src={process.env.PUBLIC_URL + "./images/logo_SSG.png"}
+                    alt="ssgLogo"
                   />
                 </div>
               </li>
               <li className="weekly_schedule_content lightNavy">
                 <div className="red active"></div>
                 <div className="weekly_schedule_content_text">
-                  <p className="place">고척</p>
-                  <h4 className="font_red">2024.09.10(화) 18:30</h4>
-                  <p className="ticket">예매중</p>
+                  <p className="place">수원</p>
+                  <h4 className="font_red">2025.03.25(화) 18:30</h4>
+                  <p className="ticket">경기전</p>
                 </div>
                 <div className="weekly_schedule_content_img">
                   <img
@@ -95,17 +95,17 @@ const Home = () => {
                   />
                   <p>vs</p>
                   <img
-                    src={process.env.PUBLIC_URL + "./images/logo_NC.png"}
-                    alt="ncLogo"
+                    src={process.env.PUBLIC_URL + "./images/logo_KT.png"}
+                    alt="ktLogo"
                   />
                 </div>
               </li>
               <li className="weekly_schedule_content lightNavy">
                 <div className="red active"></div>
                 <div className="weekly_schedule_content_text">
-                  <p className="place">고척</p>
-                  <h4 className="font_red">2024.09.10(화) 18:30</h4>
-                  <p className="ticket">예매중</p>
+                  <p className="place">수원</p>
+                  <h4 className="font_red">2025.03.26(수) 18:30</h4>
+                  <p className="ticket">경기전</p>
                 </div>
                 <div className="weekly_schedule_content_img">
                   <img
@@ -114,17 +114,17 @@ const Home = () => {
                   />
                   <p>vs</p>
                   <img
-                    src={process.env.PUBLIC_URL + "./images/logo_NC.png"}
-                    alt="ncLogo"
+                    src={process.env.PUBLIC_URL + "./images/logo_KT.png"}
+                    alt="ktLogo"
                   />
                 </div>
               </li>
               <li className="weekly_schedule_content lightNavy">
                 <div className="red active"></div>
                 <div className="weekly_schedule_content_text">
-                  <p className="place">고척</p>
-                  <h4 className="font_red">2024.09.10(화) 18:30</h4>
-                  <p className="ticket">예매중</p>
+                  <p className="place">수원</p>
+                  <h4 className="font_red">2025.03.27(목) 18:30</h4>
+                  <p className="ticket">경기전</p>
                 </div>
                 <div className="weekly_schedule_content_img">
                   <img
@@ -133,8 +133,27 @@ const Home = () => {
                   />
                   <p>vs</p>
                   <img
-                    src={process.env.PUBLIC_URL + "./images/logo_NC.png"}
-                    alt="ncLogo"
+                    src={process.env.PUBLIC_URL + "./images/logo_KT.png"}
+                    alt="ktLogo"
+                  />
+                </div>
+              </li>
+              <li className="weekly_schedule_content lightNavy">
+                <div className="red active"></div>
+                <div className="weekly_schedule_content_text">
+                  <p className="place">잠실</p>
+                  <h4 className="font_red">2025.03.28(금) 18:30</h4>
+                  <p className="ticket">경기전</p>
+                </div>
+                <div className="weekly_schedule_content_img">
+                  <img
+                    src={process.env.PUBLIC_URL + "./images/logo_Doosan.png"}
+                    alt="doosanLogo"
+                  />
+                  <p>vs</p>
+                  <img
+                    src={process.env.PUBLIC_URL + "./images/logo_Samsung.png"}
+                    alt="samsungLogo"
                   />
                 </div>
               </li>
@@ -150,6 +169,14 @@ const Home = () => {
           </div>
         </div>
         <HomeBearsVideo />
+      </div>
+      <div className="home_Events">
+        <div className="layout_fix">
+          <div className="heading">
+            <h2 className="title">EVENT</h2>
+            <Link to="/events">더보기</Link>
+          </div>
+        </div>
       </div>
     </>
   );

@@ -9,11 +9,8 @@ const Navbar = () => {
         <div className="h_top">
           <div className="h_top_menu layout_fix">
             <Link to="/login">로그인</Link>
-            <Link to="/login">무료회원가입</Link>
-            <Link to="/mypage" className="orange">
-              유료회원
-            </Link>
-            <Link to="/shop" className="lightblue">
+            <Link to="/signup">무료회원가입</Link>
+            <Link to="https://www.doosanbearswefan.shop/" className="lightblue">
               SHOP
             </Link>
           </div>
@@ -25,7 +22,7 @@ const Navbar = () => {
             <Link to="/game">GAME</Link>
             <Link to="/stats">STATS</Link>
             <Link to="/ticket">TICKET</Link>
-            {/* <Link to="/community">두런두런</Link> */}
+            <Link to="/community">두런두런</Link>
           </div>
         </div>
         <div className="h_logo"></div>

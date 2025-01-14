@@ -22,11 +22,11 @@ $tint1: #a5babb;
 $tint2: #d5dcdd;
 $tint3: #fafafa;
 $rem: 0.8rem;
-$ff: 'Pretendard', sans-serif;
+$ff: 'Pretendard', "Gotham";
 $mobile: 0px;
 $tablet: 768px;
 $desktop: 992px;
-*{box-sizing: border-box; font-family: "Pretendard";}
+*{box-sizing: border-box; font-family: "Gotham, Pretendard" !important; user-select: none;}
 
 $breakpoints: (
 	'sm': (
