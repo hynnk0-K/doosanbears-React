@@ -1,59 +1,73 @@
 #container {
-  max-width: 1920px;
+  // max-width: 1920px;
+  width: 100%;
   height: 110px;
-  font-family: "Gotham, Pretendard";
+  position: fixed;
+  z-index: 999;
+
   .header {
     width: 100%;
     height: 100%;
     background-color: #181928;
     display: flex;
     flex-direction: column;
-    .h_top { 
+
+    .h_top {
       width: 100%;
       height: 50%;
       max-height: 50px;
+
       .h_top_menu {
         display: flex;
         align-items: center;
         justify-content: flex-end;
         color: #fff;
-        font-size: 15px;
+        font-size: .938rem;
         font-weight: 500;
+
         a {
           padding-left: 20px;
         }
+
         a.orange {
           color: #f99a0e;
         }
+
         a.lightblue {
           color: #01c7f7;
         }
       }
     }
+
     .h_bottom {
       width: 100%;
       height: 50%;
       border-top: 2px solid #272b3a;
+
       &::after {
         content: " ";
         position: absolute;
         width: 100%;
-        height: 10px;
-        background: linear-gradient(90deg, #e61a1a 0%, #0c1a4e 100%);
+        height: 6px;
+        background: linear-gradient(90deg, #e61a1a -7.03%, #0c1a4e 108.33%);
+        ;
       }
+
       .h_bottom_menu {
         display: flex;
         justify-content: center;
         align-items: center;
         color: #66687b;
-        font-size: 16px;
+        font-size: 1.125rem;
         font-weight: 600;
+
         a {
           width: 16.6%;
           text-align: center;
         }
       }
     }
+
     .h_logo {
       position: absolute;
       width: 100px;
@@ -63,6 +77,12 @@
       top: 0;
       left: 50%;
       transform: translateX(-50%);
+
+      a {
+        display: block;
+        width: 100px;
+        height: 100px;
+      }
     }
   }
 }

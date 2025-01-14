@@ -1,16 +1,20 @@
 .homeContainer {
-  max-width: 1920px;
+  // max-width: 1920px;
+  width: 100%;
   min-width: 1300px;
   min-height: 100%;
   background-color: #272b3a;
   position: relative;
+  padding-top: 110px;
+
   .homeVideoBackground {
     width: 100%;
     height: 100%;
     opacity: 0.1;
-    background: linear-gradient(90deg, #e61a1a 0%, #1940ca 100%);
+    // background: linear-gradient(90deg, #e61a1a 0%, #1940ca 100%);
     position: absolute;
   }
+
   .homeSns {
     padding: 0 36px;
     position: absolute;
@@ -18,29 +22,35 @@
     top: 50%;
     transform: translateY(-50%);
     z-index: 10;
+
     .snsList {
       display: flex;
       flex-direction: column;
       gap: 16px;
       align-items: end;
+
       li {
         width: 40px;
         height: 40px;
         padding: 8px;
         border-radius: 20px;
         background-color: #3a4152;
+
         &:nth-child(2) {
           padding: 11px;
+
           img {
             width: 18px;
             height: 18px;
           }
         }
+
         img {
           width: 24px;
           height: 24px;
           background: none;
         }
+
         a {
           width: 40px;
           height: 40px;
@@ -48,15 +58,18 @@
       }
     }
   }
+
   .homeVideo {
     width: 100%;
     height: calc(100vh - 106px);
     position: relative;
     margin: 0 auto;
-    .react_player{
+
+    .react_player {
       width: 100%;
       height: 100%;
-      video{
+
+      video {
         position: absolute;
         top: 0;
         left: 0;
@@ -69,6 +82,7 @@
         z-index: 9;
       }
     }
+
     // iframe {
     //   display: block;
     //   width: 100%;
@@ -77,30 +91,36 @@
     // }
   }
 }
+
 .home_score_schedule {
   max-width: 1920px;
   background-color: #181928;
   margin-bottom: 70px;
+
   .score {
     margin: 0 auto;
     padding-top: 100px;
     padding-bottom: 100px;
+
     .scoreList {
       width: 1200px;
       display: flex;
       align-items: center;
       gap: 12px;
+
       li {
         width: 220px;
         padding: 20px 0;
         color: #fff;
         text-align: center;
         border-radius: 5px;
+
         p {
           width: 220px;
           margin-bottom: 8px;
           font-size: 14px;
         }
+
         span {
           font-size: 18px;
           font-weight: bold;
@@ -108,23 +128,29 @@
       }
     }
   }
+
   .schedule {
     padding-bottom: 60px;
     overflow-x: scroll;
+
     h2 {
       margin-bottom: 32px;
     }
+
     .weekly_schedule {
       margin-left: 20px;
-      > p {
+
+      >p {
         margin-bottom: 12px;
         font-size: 13px;
         font-weight: 300;
         color: #fff;
       }
+
       ul {
         display: flex;
         gap: 16px;
+
         .weekly_schedule_content {
           width: 342px;
           padding: 45px 34px;
@@ -132,6 +158,7 @@
           border-radius: 5px;
           position: relative;
           user-select: none;
+
           .active {
             width: 100%;
             height: 10px;
@@ -140,18 +167,22 @@
             top: 0;
             left: 0;
           }
+
           .weekly_schedule_content_text {
             border-bottom: 1px solid #666;
+
             p.place {
               font-size: 13px;
               font-weight: 400;
               color: #888888;
             }
+
             h4 {
               margin-top: 8px;
               font-size: 20px;
               font-weight: 500;
             }
+
             p.ticket {
               margin: 10px 0;
               font-size: 14px;
@@ -159,17 +190,20 @@
               color: #fff;
             }
           }
+
           .weekly_schedule_content_img {
-            min-width:  250px;
+            min-width: 250px;
             min-height: 150px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding-top: 45px;
+
             img {
               width: 70px;
               height: 70px;
             }
+
             p {
               color: #fff;
             }
@@ -179,23 +213,29 @@
     }
   }
 }
+
 .home_BearsTV {
   padding: 70px 0;
   background-color: #222232;
+
   .heading {
-    > a {
+    >a {
       color: #888888;
       font-size: 13px;
     }
   }
+
   .swiper_container {
     margin: 60px 80px;
-    .swiper-button-prev{
+
+    .swiper-button-prev {
       left: 32%;
     }
-    .swiper-button-next{
+
+    .swiper-button-next {
       left: 63%;
     }
+
     .swiper-button-prev,
     .swiper-button-next {
       position: absolute;
@@ -210,33 +250,39 @@
       background-color: #e4203dc0;
       border-radius: 50%;
       color: #fff;
-      &::after{
+
+      &::after {
         font-size: 16px;
       }
     }
   }
-  #video_list{
-    .video_list{
+
+  #video_list {
+    .video_list {
       width: 1200px;
       display: flex;
       flex-wrap: wrap;
       gap: 23px;
-      li{
+
+      li {
         width: 262px;
         height: 200px;
         position: relative;
-        a{
+
+        a {
           width: 262px;
           height: 200px;
           position: absolute;
           top: 0;
           left: 0;
         }
-        img{
+
+        img {
           width: 100%;
           height: 100%;
         }
-        div{
+
+        div {
           color: #fff;
         }
       }
@@ -244,12 +290,10 @@
   }
 }
 
-.home_Events{
+.home_Events {
   padding: 70px 0;
-  .heading{
-    h2{
 
-    }
+  .heading {
+    h2 {}
   }
 }
-

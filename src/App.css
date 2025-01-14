@@ -6,7 +6,12 @@
   padding: 0 20px;
 }
 
-html{
+.signUp_layout {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+html {
   background-color: #181928;
 }
 
@@ -24,40 +29,84 @@ html{
   line-height: inherit;
 }
 
+.mt_16 {
+  margin-top: 16px;
+}
 
-[class~=red]{
+.mt_80 {
+  margin-top: 80px;
+}
+
+[class~=red] {
   background-color: #E4203E;
 }
-[class~=font_red]{
+
+[class~=font_red] {
   color: #E4203E;
 }
-[class~=lightNavy]{
+
+[class~=lightNavy] {
   background-color: #272B3A;
 }
-[class~=heading]{
+
+[class~=heading] {
   margin-bottom: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-[class~=title]{
+
+h2[class~=title] {
   color: #fff;
   font-size: 26px;
   font-weight: bold;
 }
-[class~=inner_layout]{
+
+p[class~=title] {
+  margin-top: 40px;
+  margin-bottom: 16px;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+[class~=inner_layout] {
   padding-left: 25px;
   padding-right: 25px;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 8px;
   height: 5px;
 }
-::-webkit-scrollbar-track{
+
+::-webkit-scrollbar-track {
   background: #444;
 }
-::-webkit-scrollbar-thumb{
+
+::-webkit-scrollbar-thumb {
   background-color: #888;
   border-radius: 10px;
+}
+
+
+[class~=line_box] {
+  background: #272b3a;
+  border: 1px solid #3a4152;
+  padding: 24px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .25);
+}
+
+button[class~=submit] {
+  padding: 0 150px;
+  height: 80px;
+  font-size: 1.125rem;
+}
+
+button[class*=btn] {
+  font-style: normal;
+  gap: 2px;
+  border-radius: 4px;
 }

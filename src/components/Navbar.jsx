@@ -25,7 +25,9 @@ const Navbar = () => {
             <Link to="/community">두런두런</Link>
           </div>
         </div>
-        <div className="h_logo"></div>
+        <div className="h_logo">
+          <Link to="/"></Link>
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,85 @@
+.sign_up {
+  color: #fff;
+
+  .heading_up {
+    margin: 62px auto 60px;
+    text-align: center;
+
+    .title_up {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 60px;
+    }
+
+    .sub {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .mini {
+      color: #adb1bd;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+  }
+
+  .subscription {
+    .sub_section {
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+        li {
+          display: flex;
+          gap: 16px;
+          font-size: .875rem;
+
+          strong {
+            color: #adb1bd;
+            font-weight: 500;
+            text-align: left;
+            min-width: 50px;
+          }
+
+          span {
+            letter-spacing: -.02em;
+            color: #dee0e5;
+            text-align: left;
+          }
+        }
+      }
+    }
+
+    .info_txt {
+      text-align: left;
+
+      span {
+        display: block;
+        margin-bottom: 7px;
+        font-size: .813rem;
+        color: #adb1bd;
+      }
+    }
+
+  }
+
+  .page_btn_wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button.submit_style {
+      padding: 0 150px;
+      height: 80px;
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: #fff;
+      border: none;
+      box-shadow: none;
+      cursor: pointer;
+    }
+  }
+}
