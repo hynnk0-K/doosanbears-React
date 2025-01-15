@@ -15,7 +15,6 @@ html {
   background-color: #181928;
 }
 
-
 .ytp-button {
   display: none;
   border: none;
@@ -33,36 +32,48 @@ html {
   margin-top: 16px;
 }
 
+.mt_40{
+  margin-top: 40px !important;
+}
+
 .mt_80 {
   margin-top: 80px;
 }
 
-[class~=red] {
-  background-color: #E4203E;
+.p_14_24{
+  padding: 14px 24px !important;
 }
 
-[class~=font_red] {
-  color: #E4203E;
+.font-13 {
+  font-size: .813rem !important;
 }
 
-[class~=lightNavy] {
-  background-color: #272B3A;
+[class~="red"] {
+  background-color: #e4203e;
 }
 
-[class~=heading] {
+[class~="font_red"] {
+  color: #e4203e;
+}
+
+[class~="lightNavy"] {
+  background-color: #272b3a;
+}
+
+[class~="heading"] {
   margin-bottom: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-h2[class~=title] {
+h2[class~="title"] {
   color: #fff;
   font-size: 26px;
   font-weight: bold;
 }
 
-p[class~=title] {
+p[class~="title"] {
   margin-top: 40px;
   margin-bottom: 16px;
   font-size: 1.125rem;
@@ -70,7 +81,7 @@ p[class~=title] {
   color: #fff;
 }
 
-[class~=inner_layout] {
+[class~="inner_layout"] {
   padding-left: 25px;
   padding-right: 25px;
 }
@@ -89,24 +100,206 @@ p[class~=title] {
   border-radius: 10px;
 }
 
+button[class^="submit"] {
+  padding: 24px 140px;
+  font-size: 1.125rem;
+      font-weight: 700;
+      color: #fff;
+}
 
-[class~=line_box] {
+button[class*="btn"] {
+  font-style: normal;
+  gap: 2px;
+  border-radius: 4px;
+}
+
+button,
+button[class*="btn"] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Pretendard, sans-serif;
+  font-weight: 600;
+  color: var(--gray-00);
+}
+
+.btn-wrap+.info-txt, .info-txt, .input-form .info-txt {
+  font-family: Pretendard, sans-serif;
+  color: var(--gray-40);
+  margin-top: 10px;
+  font-size: .75rem;
+  font-weight: 500;
+  text-align: left;
+}
+
+[class~="line_box"] {
   background: #272b3a;
   border: 1px solid #3a4152;
   padding: 24px;
   box-sizing: border-box;
   border-radius: 2px;
-  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .25);
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.25);
 }
 
-button[class~=submit] {
-  padding: 0 150px;
-  height: 80px;
-  font-size: 1.125rem;
+[class~=scroll_box] {
+  width: 100%;
+  border: 1px solid var(--gray-50);
+  background-color: var(--gray-60);
+  color: var(--gray-20);
+  box-sizing: border-box;
+  padding: 24px;
+  font-size: .875rem;
+  line-height: 1.4;
+  letter-spacing: -.02em;
+  text-align: left;
+  resize: none;
+  overflow: overlay;
 }
 
-button[class*=btn] {
-  font-style: normal;
-  gap: 2px;
-  border-radius: 4px;
+
+[class^=check_box]{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 30px;
+}
+
+#input_form .scroll_box li{
+    font-family: 'Pretendard', sans-serif;
+    letter-spacing: -.02em;
+    text-align: left;
+    color: var(--gray-30);
+    font-size: .875rem;
+    line-height: 1.3;
+    margin-bottom: 30px;
+}
+
+#input_form .scroll_box strong{
+  display: block;
+  font-family: Pretendard, sans-serif;
+  font-size: .938rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: -.02em;
+  color: var(--gray-30);
+}
+
+input[type="checkbox" i] {
+  background-color: initial;
+  cursor: default;
+  appearance: auto;
+  box-sizing: border-box;
+  margin: 3px 3px 3px 4px;
+  padding: initial;
+  border: initial;
+}
+
+/* input_form table */
+/* General Table Styles */
+.table, table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  font-family: Pretendard, sans-serif;
+}
+
+.table {
+  table-layout: fixed;
+  border-left: 1px solid var(--gray-40);
+}
+
+.table tr td, 
+.table tr>th {
+  border-bottom: 1px solid #dcdfe0;
+}
+
+.table th, 
+.table td {
+  padding: 12px 8px;
+  min-width: 44px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Table Header Styles */
+.table th {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gray-00);
+  line-height: 1.12;
+  background: var(--gray-50);
+  border-right: 1px solid var(--gray-40);
+  border-top: 1px solid var(--gray-40);
+}
+
+/* Table Data Cell Styles */
+.table td {
+  padding: 12px 8px;
+  min-width: 44px;
+  font-size: .875rem;
+  /* color: var(--gray-60); */
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: -.025em;
+  text-align: center;
+  vertical-align: middle;
+  border-top: 1px solid var(--gray-20);
+  border-right: 1px solid var(--gray-20);
+  background: var(--gray-60);
+}
+
+/* Scrollable Table */
+.table.scroll {
+  overflow: auto;
+}
+
+.table.scroll tbody th {
+  position: sticky;
+  left: 0;
+  background: var(--gray-00);
+  color: var(--gray-60);
+  border-top: 1px solid var(--gray-20);
+  z-index: 1;
+}
+
+/* In-Border Table Styles */
+.table[class*=table-inborder] {
+  border: 0;
+  background: none;
+}
+
+.table[class*=table-inborder] td {
+  border-right-color: var(--gray-50);
+  border-bottom: 1px solid var(--gray-50);
+  line-height: 1.2;
+}
+
+.table[class*=table-inborder] th, 
+.table[class*=table-inborder] tbody th {
+  padding: 12px 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--gray-20);
+  background: var(--gray-50);
+  border-top: 1px solid var(--gray-50);
+  border-bottom: 1px solid var(--gray-50);
+}
+
+.table[class*=table-inborder].scroll tbody th {
+  background: var(--gray-80);
+}
+.table.scroll tbody th, .table[class*=table-inborder] tbody th:after, .table[class*=table-inborder].scroll tbody th {
+  background: var(--gray-80);
+}
+
+/* Utility Classes */
+.line-h15 {
+  line-height: 1.5 !important;
+}
+
+.fw-400 {
+  font-weight: 400 !important;
+}
+
+.bg-gray-60 {
+  background-color: var(--gray-60) !important;
 }

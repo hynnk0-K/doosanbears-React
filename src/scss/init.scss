@@ -7,6 +7,33 @@
 	font-style: normal;
 }
 
+:root{
+	--primary: #e4203e;
+    --primary-bg: #c11925;
+    --secondary: #4a86ff;
+    --point-01: #01c7f7;
+    --point-02: #f99a0e;
+    --blue: #44a5ff;
+    --green: #54e195;
+    --orange: #ef9a37;
+    --red: #ff4949;
+    --gray-90: #0a0f20;
+    --gray-80: #181928;
+    --gray-70: #222232;
+    --gray-60: #272b3a;
+    --gray-50: #3a4152;
+    --gray-40: #66687b;
+    --gray-30: #adb1bd;
+    --gray-20: #dee0e5;
+    --gray-10: #e8ecef;
+    --gray-05: #f1f3f5;
+    --gray-00: #fff;
+    --gradation-01: linear-gradient(90deg, #e61a1a -7.03%, #0725c6 148.44%);
+    --gradation-02: linear-gradient(90deg, #e61a1a -7.03%, #1940ca 108.33%);
+    --gradation-03: linear-gradient(179.92deg, #d00f31 -5.56%, rgba(29, 23, 104, 0) 102.81%);
+    --gradation-04: linear-gradient(90deg, #e61a1a -7.03%, #0c1a4e 108.33%);
+}
+
 //변수
 $primary: #70b9be;
 $text1: #0a2533;
@@ -38,8 +65,59 @@ $desktop: 992px;
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-	font-family: "아싸컴 무료고딕 TTF ,Gotham, Pretendard" !important;
+	font-family: "AssacomFreeGothic ,Gotham, Pretendard" !important;
 	user-select: none;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    font-family: Assacom, Gotham, Pretendard, sans-serif;
+    font-style: normal;
+    font-size: 100%;
+    font-weight: 400;
+    color: var(--gray-00);
+    line-height: 1.2;
+    vertical-align: baseline;
+    text-size-adjust: none;
+}
+
+button{
+	background: inherit ; border:none; box-shadow:none; border-radius:0; padding:0; overflow:visible; cursor:pointer
+}
+
+input {
+    border: 0;
+    outline: 0;
+}
+
+input, select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    font-family: Pretendard, sans-serif;
+}
+
+button, input, textarea {
+    border-radius: 0;
+    font-family: Pretendard, sans-serif;
+}
+
+*, :after, :before {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font-family: Assacom, Gotham, Pretendard, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    word-break: break-all;
+    word-wrap: break-word;
+    vertical-align: baseline;
+    line-height: 1.2;
+    box-sizing: border-box;
 }
 
 $breakpoints: (

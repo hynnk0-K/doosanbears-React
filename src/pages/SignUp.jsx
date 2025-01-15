@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 
 import '../scss/Login.scss'
@@ -8,12 +8,12 @@ const SignUp = () => {
   const [navbarHeight, setNavbarHeight] = useState(0);
   useEffect(() => {
     // Navbar의 높이를 동적으로 계산
-    const navbar = document.querySelector('#container');
+    const navbar = document.querySelector("#container");
     setNavbarHeight(navbar ? navbar.offsetHeight : 0);
   }, []);
 
   return (
-    <div className="sign_up" style={{ paddingTop: navbarHeight }}>
+    <div className="signup" style={{ paddingTop: navbarHeight }}>
       <div className="layout_fix">
         <div className="signUp_layout">
           <div className="heading_up">
@@ -44,7 +44,7 @@ const SignUp = () => {
             </p>
           </div>
           <div className="page_btn_wrap mt_80">
-            <Link to="/signUp/check">
+            <Link to="/signup/stepcheck">
               <button className="submit_style btn_join red" type="button">다음</button>
             </Link>
           </div>

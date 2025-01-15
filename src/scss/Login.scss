@@ -1,4 +1,4 @@
-.sign_up {
+.signup {
   color: #fff;
 
   .heading_up {
@@ -35,7 +35,7 @@
         li {
           display: flex;
           gap: 16px;
-          font-size: .875rem;
+          font-size: 0.875rem;
 
           strong {
             color: #adb1bd;
@@ -45,7 +45,7 @@
           }
 
           span {
-            letter-spacing: -.02em;
+            letter-spacing: -0.02em;
             color: #dee0e5;
             text-align: left;
           }
@@ -59,27 +59,127 @@
       span {
         display: block;
         margin-bottom: 7px;
-        font-size: .813rem;
+        font-size: 0.813rem;
         color: #adb1bd;
       }
     }
-
   }
 
   .page_btn_wrap {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+}
 
-    button.submit_style {
-      padding: 0 150px;
-      height: 80px;
-      font-size: 1.125rem;
-      font-weight: 700;
-      color: #fff;
+.signup_check {
+  .step_bar {
+    width: 100%;
+    display: flex;
+    .step {
+      border: 1px solid var(--gray-50);
+      border-right: 0;
+      font-size: 0.875rem;
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: 0;
+      text-align: center;
+      box-sizing: border-box;
+      padding: 9px;
+      flex: 1 1;
+      color: var(--gray-30);
+      button {
+        width: 100%;
+        text-align: center;
+        color: var(--gray-30);
+      }
+    }
+    .step.on {
+      button {
+        color: var(--gray-00) !important; 
+      }
+    }
+    .step1 {
+      border-left: none;
+      border-radius: 4px 0 0 4px;
+    }
+    .step3 {
+      border-right: 1px solid var(--gray-50);
+      border-radius: 0 4px 4px 0;
+    }
+    .on {
+      color: var(--gray-00);
+      border-left: 1px solid var(--primary);
+      border: 1px solid var(--primary);
+      border-left-color: var(--gray-50);
+      background: var(--primary);
+    }
+  }
+  .input_form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: var(--gray-30);
+    margin-top: 40px;
+    .scroll_box {
+      height: 180px;
+      font-family: "Pretendard", sans-serif;
+    }
+    .check_box.small {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 30px;
+    }
+    .sub-txt {
+      text-align: left;
+      font-size: 0.875rem;
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: 0;
+      margin-top: 16px;
+    }
+  }
+}
+
+.check_box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 30px;
+  li {
+    input {
+      position: absolute;
+      display: none;
+    }
+    ::before {
+      content: "";
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      border-radius: 50%;
       border: none;
-      box-shadow: none;
+      background: var(--gray-50) url(/images/ico_check_gray40.png) 50% 50%
+        no-repeat;
+      background-size: 13px;
+    }
+    label {
+      display: flex;
+      position: relative;
       cursor: pointer;
+      ::before {
+        content: "";
+        width: 0;
+        height: 0;
+      }
+      span {
+        display: flex;
+        align-items: center;
+        font-family: Pretendard, sans-serif;
+        font-size: 0.938rem;
+        font-weight: 500;
+        color: var(--gray-30);
+      }
     }
   }
 }
