@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef  } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import '../scss/Login.scss';
@@ -31,7 +31,6 @@ const SignUpCheck = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [birth, setBirth] = useState("");
 
   const idRule = /^[a-z0-9]{6,16}$/;
   const pwRule = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$&^*])[a-zA-Z\d!@#$&^*]{8,16}$/;
@@ -46,7 +45,6 @@ const SignUpCheck = () => {
     name: { text: "", color: "" },
     phone: { text: "", color: "" },
     email: { text: "", color: "" },
-    birth: {text: "", color: ""},
   })
 
   const handleAllCheck = () => {
@@ -56,13 +54,13 @@ const SignUpCheck = () => {
     setAllChecked(newAllChecked);
   };
 
-  useEffect(()=>{
-    if(termsChecked && privacyChecked){
+  useEffect(() => {
+    if (termsChecked && privacyChecked) {
       setAllChecked(true);
-    }else{
+    } else {
       setAllChecked(false);
     }
-  },[termsChecked, privacyChecked]);
+  }, [termsChecked, privacyChecked]);
 
   const handleMessageChange = (key, text, color) => {
     setMessages((prevMessages) => ({
@@ -72,13 +70,13 @@ const SignUpCheck = () => {
   };
 
   const handleId = (e) => {
-    const newValue = e.targe.value;
+    const newValue = e.target.value;
     setId(newValue);
-    if(idRule.test(newValue)){
+    if (idRule.test(newValue)) {
       handleMessageChange("id", "사용 가능한 아이디 입니다.", "success_color");
-    } else if(newValue === ""){
+    } else if (newValue === "") {
       handleMessageChange("id", "아이디를 입력해주세요.", "error_color");
-    } else{
+    } else {
       handleMessageChange("id", "아이디는 영문소문자/숫자 4글자 이상 16글자 미만으로 사용 가능합니다.", "error_color");
       setId("")
     }
@@ -86,11 +84,11 @@ const SignUpCheck = () => {
   const handlePw = (e) => {
     const newPwValue = e.target.value;
     setPw(newPwValue);
-    if(pwRule.test(newPwValue)){
+    if (pwRule.test(newPwValue)) {
       handleMessageChange("pw", "사용 가능한 비밀번호 입니다.", "success_color");
-    } else if(newPwValue === ""){
+    } else if (newPwValue === "") {
       handleMessageChange("pw", "비밀번호를 입력해주세요.", "error_color")
-    } else{
+    } else {
       handleMessageChange("pw", "비밀번호는 영문 대소문자/숫자/특수문자 조합, 8글자 이상 16글자 미만으로 사용 가능합니다.", "error_color");
     }
   }
@@ -162,8 +160,23 @@ const SignUpCheck = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(termsChecked && privacyChecked){
-      setStep(prevStep => Math.min(prevStep + 1,2));
+    if (step === 0) {
+      if (termsChecked && privacyChecked) {
+        setStep(prevStep => Math.min(prevStep + 1, 2));
+      } else {
+        console.log('에러')
+      }
+    } if (step === 1) {
+      if (idRule.test(id) &&
+        pwRule.test(pw) &&
+        pw2 === pw &&
+        nameRule.test(name) &&
+        phoneRule.test(phone) &&
+        emailRule.test(email)) {
+        console.log('회원가입을 축하합니다.')
+      } else {
+        console.log('에러')
+      }
     }
   };
   return (
@@ -174,12 +187,12 @@ const SignUpCheck = () => {
             <h2 className="title_up">회원가입</h2>
           </div>
           <ul className="step_bar">
-            <li className={`agreement step step0 ${step === 0 ? "on" : ""}`}><button type='button' className='btn'>약관동의</button></li> 
+            <li className={`agreement step step0 ${step === 0 ? "on" : ""}`}><button type='button' className='btn'>약관동의</button></li>
             <li className={`information step step1 ${step === 1 ? "on" : ""}`}><button type='button' className='btn'>정보입력</button></li>
             <li className={`success step step2 ${step === 2 ? "on" : ""}`}><button type='button' className='btn'>회원가입 완료</button></li>
           </ul>
           {step === 0 && (
-            <form id='input_form' style={{textAlign: 'left'}} action="#" method="post" name="signup" onSubmit={handleSubmit}>
+            <form id='input_form' style={{ textAlign: 'left' }} action="#" method="post" name="signup" onSubmit={handleSubmit}>
               <div className="input_form">
                 <p className='title'>두산베어스 이용약관</p>
                 <div className="scroll_box">
@@ -202,7 +215,7 @@ const SignUpCheck = () => {
                       </li>
                       <li>
                         <strong> 제 4조 (약관 이외의 준칙) </strong>
-                        &nbsp;&nbsp;&nbsp;&nbsp;이 약관에 언급되지 않은 사항이 전기통신기본법, 전기통신사업법, 기타 관련법령에 규정되어 있는 경우 그 규정에 따라 적용할 수 있습니다.     
+                        &nbsp;&nbsp;&nbsp;&nbsp;이 약관에 언급되지 않은 사항이 전기통신기본법, 전기통신사업법, 기타 관련법령에 규정되어 있는 경우 그 규정에 따라 적용할 수 있습니다.
                       </li>
                       <li>
                         <strong> 제 5조 (회원 가입의 성립) </strong>
@@ -229,7 +242,7 @@ const SignUpCheck = () => {
                       </li>
                       <li>
                         <strong> 제 8조 (개인정보의 위탁) </strong>
-                        “구단”은 수집된 개인정보의 취급 및 관리 등의 업무(이하 "업무")를 스스로 수행함을 원칙으로 하나, 필요한 경우 업무의 일부 또는 전부를 회사가 선정한 회사에 위탁할 수 있습니다.     
+                        “구단”은 수집된 개인정보의 취급 및 관리 등의 업무(이하 "업무")를 스스로 수행함을 원칙으로 하나, 필요한 경우 업무의 일부 또는 전부를 회사가 선정한 회사에 위탁할 수 있습니다.
                       </li>
                       <li>
                         <strong> 제 9조 (회원의 아이디 및 비밀번호의 관리에 대한 의무) </strong>
@@ -290,7 +303,7 @@ const SignUpCheck = () => {
                       </li>
                       <li>
                         <strong> 제 15조 (손해배상) </strong>
-                        &nbsp;&nbsp;&nbsp;&nbsp;“구단”은 서비스 요금이 무료인 동안의 서비스 이용과 관련하여 “회원”에게 발생한 어떠한 손해도 책임지지 않습니다.     
+                        &nbsp;&nbsp;&nbsp;&nbsp;“구단”은 서비스 요금이 무료인 동안의 서비스 이용과 관련하여 “회원”에게 발생한 어떠한 손해도 책임지지 않습니다.
                       </li>
                       <li>
                         <strong> 제 16조 (면책조항) </strong>
@@ -311,23 +324,23 @@ const SignUpCheck = () => {
                       </li>
                       <li>
                         <strong> 제 18조 (회원가입과 주문 취소와 교환, 환불) </strong>
-                        &nbsp;&nbsp;&nbsp;&nbsp;(1) 회원 가입시 지불한 금액은 약관에 동의한 상태이기 때문에 취소나 반환이 안되며, 회원 고의로 탈퇴한 경우에도 취소나 반환은 안됩니다. <br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;(2) 서비스를 통해 주문한 제품의 구매 취소는 “구단”에 전화를 통해서 연락을 해야 하며 이 경우 상품 취소를 위한 재발송 비용은 이용자가 부담합니다. <br/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;(3) “구단”의 서비스 외의 타 쇼핑몰(위팬, 인터파크 등)에서 구매한 제품에 대해서는 해당 쇼핑몰의 약관에 따르며, 이에 대해 “구단”에서 책임을 지지 않습니다. <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;(1) 회원 가입시 지불한 금액은 약관에 동의한 상태이기 때문에 취소나 반환이 안되며, 회원 고의로 탈퇴한 경우에도 취소나 반환은 안됩니다. <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;(2) 서비스를 통해 주문한 제품의 구매 취소는 “구단”에 전화를 통해서 연락을 해야 하며 이 경우 상품 취소를 위한 재발송 비용은 이용자가 부담합니다. <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;(3) “구단”의 서비스 외의 타 쇼핑몰(위팬, 인터파크 등)에서 구매한 제품에 대해서는 해당 쇼핑몰의 약관에 따르며, 이에 대해 “구단”에서 책임을 지지 않습니다. <br />
                       </li>
                       <li>
                         <strong> 제 19조 (양도금지) </strong>
-                        &nbsp;&nbsp;&nbsp;&nbsp;(1) “회원”은 서비스의 이용권한, 기타 이용 계약상 지위를 타인에게 양도, 증여할 수 모든 권리 및 책임은 회원에게 있습니다. <br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;(1) “회원”은 서비스의 이용권한, 기타 이용 계약상 지위를 타인에게 양도, 증여할 수 모든 권리 및 책임은 회원에게 있습니다. <br />
                         &nbsp;&nbsp;&nbsp;&nbsp;(2) “구단”이 제3자에게 합병 또는 분할 합병되거나 서비스를 제3자에게 양도함으로써 서비스의 제공 주체가 변경되는 경우, 회사는 사전에 제9조의 통지방법으로 회원에게 통지합니다. 이 경우 합병, 분할합병, 서비스 양도에 반대하는 회원은 서비스 이용계약을 해지할 수 있습니다. <br />
                       </li>
                       <li>
                         <strong> 제 20조 (준거법 및 재판관할) </strong>
-                          &nbsp;&nbsp;&nbsp;&nbsp;(1) “구단”과 “회원”간에 발생한 서비스 이용에 관한 분쟁에 대하여는 대한민국법을 준거법으로 합니다. <br/>
-                          &nbsp;&nbsp;&nbsp;&nbsp;(2) “구단”과 “회원”간 발생한 분쟁에 관한 소송은 서울중앙지방법원을 관할 법원으로 합니다. <br/>   
+                        &nbsp;&nbsp;&nbsp;&nbsp;(1) “구단”과 “회원”간에 발생한 서비스 이용에 관한 분쟁에 대하여는 대한민국법을 준거법으로 합니다. <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;(2) “구단”과 “회원”간 발생한 분쟁에 관한 소송은 서울중앙지방법원을 관할 법원으로 합니다. <br />
                       </li>
                       <li>
                         <strong>부 칙</strong>
-                        &nbsp;&nbsp;&nbsp;&nbsp;1. 이 약관은 2024년 2월 1일부터 적용됩니다.<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;1. 이 약관은 2024년 2월 1일부터 적용됩니다.<br />
                         &nbsp;&nbsp;&nbsp;&nbsp;2. 이 약관은 2017년 7월 26일부터 시행되던 종전의 약관은 본 약관으로 대체합니다.<br />
                       </li>
                     </ul>
@@ -335,303 +348,303 @@ const SignUpCheck = () => {
                 </div>
                 <ul className='check_box round small'>
                   <li role='presentation'>
-                    <input type="checkbox" id="agree01" className="check_style" checked={termsChecked} onChange={()=>setTermsChecked(!termsChecked)}/>
+                    <input type="checkbox" id="agree01" className="check_style" checked={termsChecked} onChange={() => setTermsChecked(!termsChecked)} />
                     <label htmlFor="agree01"><span>이용약관에 동의합니다.</span></label>
                   </li>
                 </ul>
                 <p className="title">개인정보 수집 및 이용에 대한 안내</p>
                 <div className="scroll_box scroll">
-                <div class="page_content-wrap content-wrap">
-                  <ul>
-                    <li>
-                      <strong>제1조. 개인정보의 수집 및 이용목적</strong>
-                      회사는 다음과 같은 목적을 위하여 개인정보를 수집하고 있습니다.
-                      <br />
-                      가. 회원관리 : 회원제 서비스 이용 및 제한적 본인 확인제에 따른 본인확인,
-                      개인식별, 가입의사 확인, 만14세 미만 아동 개인정보 수집 시 법정 대리인
-                      동의여부 확인, 추후 법정 대리인 본인확인, 분쟁 조정을 위한 기록보존,
-                      불만처리 등 민원처리, 고지사항 전달
-                      <br />
-                      나. 서비스 제공에 관한 계약 이행 : 컨텐츠 제공, 티켓 구매, 이벤트 신청
-                      <br />
-                      다. 마케팅•광고에의 활용 : 신규 서비스 개발 및 맞춤 서비스 제공, 통계학적
-                      특성에 따른 서비스 제공 및 광고 게재, 서비스의 유효성 확인, 이벤트 및 광고성
-                      정보 제공 및 참여기회 제공, 접속빈도 파악, 회원의 서비스 이용에 대한 통계
-                    </li>
-                    <li>
-                      <strong>제2조. 개인정보의 수집 및 이용항목</strong>
-                      회사는 회원가입, 상담, 서비스 제공 등을 위해 아래와 같은 개인정보를 수집하고
-                      있습니다.
-                      <br />
-                      <br />
-                      <div class="table table-inborder scroll">
-                        <table>
-                          <tbody class="fw-400 line-h15">
-                            <tr>
-                              <th class="bg-gray-60 fixed">구분</th>
-                              <td class="bg-gray-60" colspan="2">수집방법</td>
-                              <td class="bg-gray-60">수집항목</td>
-                            </tr>
-                            <tr>
-                              <th class="bg-gray-60" rowspan="3">회원가입</th>
-                              <td>회원등록시</td>
-                              <td>필수</td>
-                              <td>
-                                &nbsp;ID, PW, 이름, 생년월일, 성별, 전화번호, 이메일, 본인인증정보
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                법정 대리인 <br />
-                                본인 인증시
-                              </td>
-                              <td>&nbsp;필수</td>
-                              <td>
-                                (14세 미만 회원인 경우)
-                                <br />
-                                법정대리인 인증 정보 : 이름, 생년월일, 성별, 전화번호,
-                                중복가입확인정보
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>본인인증시</td>
-                              <td>&nbsp;필수</td>
-                              <td>
-                                (14세 이상 회원인 경우)
-                                <br />
-                                법정대리인 인증 정보 : 이름, 생년월일, 성별, 전화번호,
-                                중복가입확인정보
-                              </td>
-                            </tr>
-                            <tr>
-                              <th class="bg-gray-60">홈페이지 이용</th>
-                              <td>자동생성</td>
-                              <td></td>
-                              <td>쿠키정보</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </li>
-                    <li>
-                      <strong>제3조. 개인정보의 보유 및 이용기간</strong>
-                      이용자의 개인정보는 수집 목적 달성 시 즉시 파기합니다. (단, 회사는 이용자의
-                      탈퇴 요청 시 즉시 탈퇴 처리하며, 계정도용 방지를 위해 탈퇴 후 15일간
-                      개인정보를 보유합니다.) 또한 관계 법령에 의해 일정 기간 동안 회원정보를
-                      보유합니다. 법령상 의무이행을 위한 기간은 아래와 같습니다. <br />
-                      가. 표시/광고에 관한 기록 : 6개월 (전자상거래 등에서의 소비자보호에 관한
-                      법률) <br />
-                      나. 계약 또는 청약철회 등에 관한 기록 : 5년 (전자상거래 등에서의
-                      소비자보호에 관한 법률) <br />
-                      다. 대금결제 및 재화 등의 공급에 관한 기록 : 5년 (전자상거래 등에서의
-                      소비자보호에 관한 법률) <br />
-                      라. 소비자의 불만 또는 분쟁처리에 관한 기록 : 3년 (전자상거래 등에서의
-                      소비자보호에 관한 법률) <br />
-                      마. 웹사이트 방문에 관한 기록 : 3개월 (통신비밀보호법)
-                    </li>
-                    <li>
-                      <strong>제4조. 개인정보 파기절차 및 방법</strong>회사는 원칙적으로 개인정보
-                      수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 파기절차
-                      및 방법은 다음과 같습니다. <br />
-                      가. 파기절차 <br />- 이용자가 회원가입 등을 위해 입력한 정보는 목적이 달성된
-                      후 별도의 DB로 옮겨져(종이의 경우 별도의 서류함) 내부 방침 및 기타 관련
-                      법령에 의한 정보보호 사유에 따라(보유 및 이용기간 참조) 일정 기간 저장된 후
-                      파기됩니다. <br />
-                      나. 파기방법 <br />- 전자적 파일형태로 저장된 개인정보는 정보를 재생할 수
-                      없도록 기술적 방법을 사용하여 완전 삭제하여 파기합니다.
-                    </li>
-                    <li>
-                      <strong>제5조. 개인정보의 제 3자 제공</strong>
-                      가. 회사는 이용자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. 다만,
-                      아래의 경우에는 예외로 합니다. <br />
-                      나. 이용자들이 사전에 동의한 경우 법령의 규정에 의거하거나, 수사 목적으로
-                      법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우
-                    </li>
-                    <li>
-                      <strong>
-                        제6조. 수집한 개인정보의 취급/처리의 위탁에 관한 사항
-                      </strong>
-                      회사는 아래와 같이 개인정보를 위탁하고 있으며, 관계 법령에 따라 위탁계약 시
-                      개인정보가 안전하게 관리될 수 있도록 필요한 사항을 규정하고 있습니다. 회사의
-                      개인정보 위탁처리 기관 및 위탁업무 내용은 아래와 같습니다.
-                      <br />
-                      <br />
-                      업무위탁고지 <br />
-                      <br />
-                      회사는 개인정보 취급/처리업무 중 서비스 제공에 필요한 필수적 업무를 아래와
-                      같이 외부 전문업체에 위탁하여 운영하고 있으며, 해당 업체는 서비스 이행을
-                      위한 목적으로만 사용됩니다. 위탁 계약시 개인정보가 안전하게 관리될 수 있도록
-                      필요한 사항을 규정해 관련 법규를 준수하고 있습니다.
-                      <br />
-                      <br />
-                      <div class="table table-inborder scroll">
-                        <table>
-                          <tbody class="fw-400 line-h15">
-                            <tr>
-                              <td class="bg-gray-60">위탁받는자</td>
-                              <td class="bg-gray-60">위탁업무 내용</td>
-                            </tr>
-                            <tr>
-                              <td>인터파크</td>
-                              <td>회원 티켓 예매, 유료회원 모집, 어린이회원 기념품 배송</td>
-                            </tr>
-                            <tr>
-                              <td>위팬</td>
-                              <td>성인회원 기념품 배송</td>
-                            </tr>
-                            <tr>
-                              <td>데이타솔루션</td>
-                              <td>홈페이지, APP 개발 및 유지보수</td>
-                            </tr>
-                            <tr>
-                              <td>PND br /EATH</td>
-                              <td>홈페이지, APP 콘텐츠 디자인 및 게시물 등록</td>
-                            </tr>
-                            <tr>
-                              <td>SCI평가정보</td>
-                              <td>홈페이지 회원가입 시 본인확인서비스 제공</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </li>
-                    <li>
-                      <strong>제7조. 이용자 및 법정대리인의 권리와 행사 방법</strong>
-                      가. 이용자 및 법정대리인은 언제든지 등록되어 있는 자신 혹은 당해 만 14세
-                      미만 아동의 개인정보를 조회하거나 수정할 수 있으며 가입 해지를 요청할 수도
-                      있습니다. <br />
-                      나. 이용자 혹은 만 14세 미만 회원은 “내 정보” 메뉴에서 개인정보를 열람,
-                      정정하거나 동의 철회할 수 있습니다. <br />
-                      다. 혹은 개인정보관리책임자에게 서면, 전화 또는 이메일로 연락하시면 지체
-                      없이 조치하겠습니다. <br />
-                      라. 귀하가 개인정보의 오류에 대한 정정을 요청하신 경우에는 정정을 완료하기
-                      전까지 당해 개인정보를 이용 또는 제공하지 않습니다. 또한, 잘못된 개인정보를
-                      제3자에게 이미 제공한 경우에는 정정 처리결과를 제3자에게 지체없이 통지하여
-                      정정이 이루어지도록 하겠습니다. <br />
-                      마. 회사는 이용자 혹은 법정 대리인의 요청에 의해 해지 또는 삭제된 개인정보는
-                      “3. 개인정보의 보유 및 이용기간”에 명시된 바에 따라 처리하고 그 외의 용도로
-                      열람 또는 이용할 수 없도록 처리하고 있습니다.
-                    </li>
-                    <li>
-                      <strong>제8조. 개인정보의 안전성 확보 조치에 관한 사항</strong>
-                      가. 개인정보보호를 위한 기술적 대책 <br />
-                      (1) 회사는 귀하의 개인정보를 취급함에 있어 개인정보가 분실, 도난, 누출, 변조
-                      또는 훼손되지 않도록 안전성 확보를 위하여 다음과 같은 기술적 대책을 강구하고
-                      있습니다. <br />
-                      (2) 귀하의 개인정보는 비밀번호에 의해 보호되고 있고 이용자 계정의 암호는
-                      오직 본인만이 알 수 있으며, 개인정보 확인 및 변경도 비밀번호를 알고 있는
-                      본인에 의해서만 가능합니다. <br />
-                      (3) 회사는 해킹 등 외부침입에 대비하여 귀하의 개인정보가 유출되는 것을 막기
-                      위해 현재 외부로부터 침입을 차단하는 장치를 이용하여 외부로부터의 공격, 해킹
-                      등을 막고 있습니다. <br />
-                      나. 개인정보보호를 위한 관리적 대책 <br />
-                      (1) 회사는 귀하의 개인정보에 대한 접근권한을 최소한의 인원으로 제한하고
-                      있습니다. 그 최소한의 인원에 해당하는 자는 다음과 같습니다. <br />- 이용자를
-                      직접 상대로 하여 마케팅업무를 수행하는 자 <br />- 기타 업무상 개인정보의
-                      취급이 불가피한 자
-                      <br />
-                      (2) 개인정보를 취급하는 직원을 대상으로 새로운 보안기술 습득 및
-                      개인정보보호의무 등에 관해 정기적인 사내교육 및 외부위탁교육을 실시하고
-                      있습니다. <br />
-                      (3) 개인정보와 일반 데이터를 혼합하여 보관하지 않고 별도의 서버를 통해
-                      분리하여 보관하고 있습니다. <br />
-                      (4) 회사는 이용자 개인의 실수 혹은 인터넷의 본질적인 위험성으로 인하여
-                      야기되는 개인정보유출에 대해 책임을 지지 않습니다. 이용자는 본인의
-                      개인정보를 보호하기 위해서 자신의 계정과 비밀번호를 적절하게 관리하고, 그에
-                      대한 책임을 져야 합니다.
-                    </li>
-                    <li>
-                      <strong>
-                        제9조. 개인정보 자동수집 장치의 설치, 운영 및 그 거부에 관한 사항
-                      </strong>
-                      회사는 이용자 맞춤 서비스를 제공하기 위해 이용자의 정보를 저장하고 수시로
-                      찾아내는 '쿠키(cookie)' 등을 사용합니다. 쿠키는 회사의 웹사이트
-                      접속 시 자동으로 이용자의 컴퓨터로 전송되는 아주 작은 텍스트 파일로 이용자
-                      컴퓨터의 하드디스크에 저장되기도 합니다. <br />
-                      <br />
-                      가. 쿠키의 사용 목적 <br />- 이용자의 접속 빈도나 방문 시간 분석, 방문 회수
-                      파악 등을 통한 이용자 맞춤형 서비스 제공 <br />
-                      나. 쿠키의 설치/운영 및 거부 <br />
-                      (1) 이용자는 쿠키에 대한 선택권을 가지고 있습니다. 이용자는 웹 브라우저의
-                      설정을 변경하여 모든 쿠키를 허용하거나, 쿠키가 저장될 때마다 확인을
-                      거치거나, 아니면 쿠키의 저장을 거부할 수 있습니다.
-                      <br />
-                      (2) 단, 모든 쿠키의 저장을 거부하는 경우, 쿠키를 통해 회사에서 제공하는
-                      서비스를 이용할 수 없습니다. <br />
-                      (3) 웹 브라우저 상단의 "도구 &gt; 인터넷 옵션 &gt; 개인정보"에서
-                      모든 쿠키를 다 받아들이거나, 쿠키가 설치될 때 통지를 보내도록 하거나, 아니면
-                      모든 쿠키를 거부할 수 있는 선택권을 가질 수 있습니다.
-                    </li>
-                    <li>
-                      <strong>제10조. 개인정보에 관한 민원서비스</strong>
-                      회사는 이용자의 개인정보를 보호하고 개인정보와 관련한 불만을 처리하기 위하여
-                      아래와 같이 관련 부서 및 개인정보관리책임자를 지정하고 있습니다. <br />
-                      <br />
-                      [개인정보 관리책임자] <br />- 성명 : 고영섭 대표이사 <br />- 이메일 :
-                      bears.privacy@doosan.com <br /><br />
-                    [개인정보 관리자] <br />- 성명 : 박진환 마케팅팀
-                      팀장 <br />- 이메일 : bears.privacy@doosan.com
-                      <br />
-                      <br />
-                      [개인정보 담당자] <br />- 성명 : 황인권 마케팅팀 수석 <br />- 이메일 :
-                      bears.privacy@doosan.com <br />
-                      귀하께서는 회사의 서비스를 이용하시며 발생하는 모든 개인정보보호 관련 민원을
-                      개인정보관리책임자 혹은 담당부서로 신고하실 수 있습니다. 회사는 이용자들의
-                      신고사항에 대해 신속하게 충분한 답변을 드릴 것입니다.
-                      <br />
-                      <br />
-                      기타 개인정보침해에 대한 신고나 상담이 필요하신 경우에는 아래 기관에
-                      문의하시기 바랍니다. <br />- 개인정보침해신고센터 (privacy.kisa.or.kr /
-                      국번없이 118) <br />- 대검찰청 사이버수사과 (spo.go.kr / 국번없이 1301)
-                      <br />- 경찰청 사이버안전국 (cyberbureau.police.go.kr / 국번없이 182)
-                      <br />- 개인정보분쟁조정위원회 (kopico.go.kr / 국번없이 1833-6972)
-                    </li>
-                    <li>
-                      <strong>제11조. 개인정보의 열람청구</strong>
-                      회사는 이용자의 개인정보를 보호하고 개인정보의 열람청구를 접수, 처리하기
-                      위하여 다음과 같이 민원처리 콜센터를 운영하고 있습니다.
-                      <br />
-                      <br />
-                      가. E-mail : bears.privacy@doosan.com <br />
-                      나. 전화번호 : 02-2240-1777 <br />
-                      다. FAX : 02-2240-1788 <br />
-                      라. 등기우편 : 서울시 송파구 올림픽로 25 잠실야구장(잠실동 10) 두산베어스
-                    </li>
-                    <li>
-                      <strong>제12조. 링크사이트</strong>
-                      회사는 이용자께 다른 회사의 웹사이트 또는 자료에 대한 링크를 제공할 수
-                      있습니다. 이 경우 회사는 외부사이트 및 자료에 대한 아무런 통제권이 없으므로
-                      그로부터 제공받는 서비스나 자료의 유용성에 대해 책임질 수 없으며 보증할 수
-                      없습니다. 회사가 포함하고 있는 링크를 클릭하여 타 사이트의 페이지로 옮겨갈
-                      경우 해당 사이트의 개인정보보호정책은 회사와 무관하므로 새로 방문한 사이트의
-                      정책을 검토해 보시기 바랍니다.
-                    </li>
-                    <li>
-                      <strong>제13조. 개인정보 처리방침 변경</strong>
-                      회사의 개인정보 처리방침은 정부의 정책 또는 보안기술의 변경에 따라 내용의
-                      추가ㆍ삭제 및 수정이 있을 수 있으며 개정 전에 홈페이지를 통해 고지합니다.
-                      <br />
-                      - 공고일자 : 2024년 02월 01일 <br />
-                      - 시행일자 : 2024년 02월 08일 <br />
-                    </li>
-                  </ul>
-              </div>
+                  <div class="page_content-wrap content-wrap">
+                    <ul>
+                      <li>
+                        <strong>제1조. 개인정보의 수집 및 이용목적</strong>
+                        회사는 다음과 같은 목적을 위하여 개인정보를 수집하고 있습니다.
+                        <br />
+                        가. 회원관리 : 회원제 서비스 이용 및 제한적 본인 확인제에 따른 본인확인,
+                        개인식별, 가입의사 확인, 만14세 미만 아동 개인정보 수집 시 법정 대리인
+                        동의여부 확인, 추후 법정 대리인 본인확인, 분쟁 조정을 위한 기록보존,
+                        불만처리 등 민원처리, 고지사항 전달
+                        <br />
+                        나. 서비스 제공에 관한 계약 이행 : 컨텐츠 제공, 티켓 구매, 이벤트 신청
+                        <br />
+                        다. 마케팅•광고에의 활용 : 신규 서비스 개발 및 맞춤 서비스 제공, 통계학적
+                        특성에 따른 서비스 제공 및 광고 게재, 서비스의 유효성 확인, 이벤트 및 광고성
+                        정보 제공 및 참여기회 제공, 접속빈도 파악, 회원의 서비스 이용에 대한 통계
+                      </li>
+                      <li>
+                        <strong>제2조. 개인정보의 수집 및 이용항목</strong>
+                        회사는 회원가입, 상담, 서비스 제공 등을 위해 아래와 같은 개인정보를 수집하고
+                        있습니다.
+                        <br />
+                        <br />
+                        <div class="table table-inborder scroll">
+                          <table>
+                            <tbody class="fw-400 line-h15">
+                              <tr>
+                                <th class="bg-gray-60 fixed">구분</th>
+                                <td class="bg-gray-60" colspan="2">수집방법</td>
+                                <td class="bg-gray-60">수집항목</td>
+                              </tr>
+                              <tr>
+                                <th class="bg-gray-60" rowspan="3">회원가입</th>
+                                <td>회원등록시</td>
+                                <td>필수</td>
+                                <td>
+                                  &nbsp;ID, PW, 이름, 생년월일, 성별, 전화번호, 이메일, 본인인증정보
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  법정 대리인 <br />
+                                  본인 인증시
+                                </td>
+                                <td>&nbsp;필수</td>
+                                <td>
+                                  (14세 미만 회원인 경우)
+                                  <br />
+                                  법정대리인 인증 정보 : 이름, 생년월일, 성별, 전화번호,
+                                  중복가입확인정보
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>본인인증시</td>
+                                <td>&nbsp;필수</td>
+                                <td>
+                                  (14세 이상 회원인 경우)
+                                  <br />
+                                  법정대리인 인증 정보 : 이름, 생년월일, 성별, 전화번호,
+                                  중복가입확인정보
+                                </td>
+                              </tr>
+                              <tr>
+                                <th class="bg-gray-60">홈페이지 이용</th>
+                                <td>자동생성</td>
+                                <td></td>
+                                <td>쿠키정보</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </li>
+                      <li>
+                        <strong>제3조. 개인정보의 보유 및 이용기간</strong>
+                        이용자의 개인정보는 수집 목적 달성 시 즉시 파기합니다. (단, 회사는 이용자의
+                        탈퇴 요청 시 즉시 탈퇴 처리하며, 계정도용 방지를 위해 탈퇴 후 15일간
+                        개인정보를 보유합니다.) 또한 관계 법령에 의해 일정 기간 동안 회원정보를
+                        보유합니다. 법령상 의무이행을 위한 기간은 아래와 같습니다. <br />
+                        가. 표시/광고에 관한 기록 : 6개월 (전자상거래 등에서의 소비자보호에 관한
+                        법률) <br />
+                        나. 계약 또는 청약철회 등에 관한 기록 : 5년 (전자상거래 등에서의
+                        소비자보호에 관한 법률) <br />
+                        다. 대금결제 및 재화 등의 공급에 관한 기록 : 5년 (전자상거래 등에서의
+                        소비자보호에 관한 법률) <br />
+                        라. 소비자의 불만 또는 분쟁처리에 관한 기록 : 3년 (전자상거래 등에서의
+                        소비자보호에 관한 법률) <br />
+                        마. 웹사이트 방문에 관한 기록 : 3개월 (통신비밀보호법)
+                      </li>
+                      <li>
+                        <strong>제4조. 개인정보 파기절차 및 방법</strong>회사는 원칙적으로 개인정보
+                        수집 및 이용목적이 달성된 후에는 해당 정보를 지체 없이 파기합니다. 파기절차
+                        및 방법은 다음과 같습니다. <br />
+                        가. 파기절차 <br />- 이용자가 회원가입 등을 위해 입력한 정보는 목적이 달성된
+                        후 별도의 DB로 옮겨져(종이의 경우 별도의 서류함) 내부 방침 및 기타 관련
+                        법령에 의한 정보보호 사유에 따라(보유 및 이용기간 참조) 일정 기간 저장된 후
+                        파기됩니다. <br />
+                        나. 파기방법 <br />- 전자적 파일형태로 저장된 개인정보는 정보를 재생할 수
+                        없도록 기술적 방법을 사용하여 완전 삭제하여 파기합니다.
+                      </li>
+                      <li>
+                        <strong>제5조. 개인정보의 제 3자 제공</strong>
+                        가. 회사는 이용자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. 다만,
+                        아래의 경우에는 예외로 합니다. <br />
+                        나. 이용자들이 사전에 동의한 경우 법령의 규정에 의거하거나, 수사 목적으로
+                        법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우
+                      </li>
+                      <li>
+                        <strong>
+                          제6조. 수집한 개인정보의 취급/처리의 위탁에 관한 사항
+                        </strong>
+                        회사는 아래와 같이 개인정보를 위탁하고 있으며, 관계 법령에 따라 위탁계약 시
+                        개인정보가 안전하게 관리될 수 있도록 필요한 사항을 규정하고 있습니다. 회사의
+                        개인정보 위탁처리 기관 및 위탁업무 내용은 아래와 같습니다.
+                        <br />
+                        <br />
+                        업무위탁고지 <br />
+                        <br />
+                        회사는 개인정보 취급/처리업무 중 서비스 제공에 필요한 필수적 업무를 아래와
+                        같이 외부 전문업체에 위탁하여 운영하고 있으며, 해당 업체는 서비스 이행을
+                        위한 목적으로만 사용됩니다. 위탁 계약시 개인정보가 안전하게 관리될 수 있도록
+                        필요한 사항을 규정해 관련 법규를 준수하고 있습니다.
+                        <br />
+                        <br />
+                        <div class="table table-inborder scroll">
+                          <table>
+                            <tbody class="fw-400 line-h15">
+                              <tr>
+                                <td class="bg-gray-60">위탁받는자</td>
+                                <td class="bg-gray-60">위탁업무 내용</td>
+                              </tr>
+                              <tr>
+                                <td>인터파크</td>
+                                <td>회원 티켓 예매, 유료회원 모집, 어린이회원 기념품 배송</td>
+                              </tr>
+                              <tr>
+                                <td>위팬</td>
+                                <td>성인회원 기념품 배송</td>
+                              </tr>
+                              <tr>
+                                <td>데이타솔루션</td>
+                                <td>홈페이지, APP 개발 및 유지보수</td>
+                              </tr>
+                              <tr>
+                                <td>PND br /EATH</td>
+                                <td>홈페이지, APP 콘텐츠 디자인 및 게시물 등록</td>
+                              </tr>
+                              <tr>
+                                <td>SCI평가정보</td>
+                                <td>홈페이지 회원가입 시 본인확인서비스 제공</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </li>
+                      <li>
+                        <strong>제7조. 이용자 및 법정대리인의 권리와 행사 방법</strong>
+                        가. 이용자 및 법정대리인은 언제든지 등록되어 있는 자신 혹은 당해 만 14세
+                        미만 아동의 개인정보를 조회하거나 수정할 수 있으며 가입 해지를 요청할 수도
+                        있습니다. <br />
+                        나. 이용자 혹은 만 14세 미만 회원은 “내 정보” 메뉴에서 개인정보를 열람,
+                        정정하거나 동의 철회할 수 있습니다. <br />
+                        다. 혹은 개인정보관리책임자에게 서면, 전화 또는 이메일로 연락하시면 지체
+                        없이 조치하겠습니다. <br />
+                        라. 귀하가 개인정보의 오류에 대한 정정을 요청하신 경우에는 정정을 완료하기
+                        전까지 당해 개인정보를 이용 또는 제공하지 않습니다. 또한, 잘못된 개인정보를
+                        제3자에게 이미 제공한 경우에는 정정 처리결과를 제3자에게 지체없이 통지하여
+                        정정이 이루어지도록 하겠습니다. <br />
+                        마. 회사는 이용자 혹은 법정 대리인의 요청에 의해 해지 또는 삭제된 개인정보는
+                        “3. 개인정보의 보유 및 이용기간”에 명시된 바에 따라 처리하고 그 외의 용도로
+                        열람 또는 이용할 수 없도록 처리하고 있습니다.
+                      </li>
+                      <li>
+                        <strong>제8조. 개인정보의 안전성 확보 조치에 관한 사항</strong>
+                        가. 개인정보보호를 위한 기술적 대책 <br />
+                        (1) 회사는 귀하의 개인정보를 취급함에 있어 개인정보가 분실, 도난, 누출, 변조
+                        또는 훼손되지 않도록 안전성 확보를 위하여 다음과 같은 기술적 대책을 강구하고
+                        있습니다. <br />
+                        (2) 귀하의 개인정보는 비밀번호에 의해 보호되고 있고 이용자 계정의 암호는
+                        오직 본인만이 알 수 있으며, 개인정보 확인 및 변경도 비밀번호를 알고 있는
+                        본인에 의해서만 가능합니다. <br />
+                        (3) 회사는 해킹 등 외부침입에 대비하여 귀하의 개인정보가 유출되는 것을 막기
+                        위해 현재 외부로부터 침입을 차단하는 장치를 이용하여 외부로부터의 공격, 해킹
+                        등을 막고 있습니다. <br />
+                        나. 개인정보보호를 위한 관리적 대책 <br />
+                        (1) 회사는 귀하의 개인정보에 대한 접근권한을 최소한의 인원으로 제한하고
+                        있습니다. 그 최소한의 인원에 해당하는 자는 다음과 같습니다. <br />- 이용자를
+                        직접 상대로 하여 마케팅업무를 수행하는 자 <br />- 기타 업무상 개인정보의
+                        취급이 불가피한 자
+                        <br />
+                        (2) 개인정보를 취급하는 직원을 대상으로 새로운 보안기술 습득 및
+                        개인정보보호의무 등에 관해 정기적인 사내교육 및 외부위탁교육을 실시하고
+                        있습니다. <br />
+                        (3) 개인정보와 일반 데이터를 혼합하여 보관하지 않고 별도의 서버를 통해
+                        분리하여 보관하고 있습니다. <br />
+                        (4) 회사는 이용자 개인의 실수 혹은 인터넷의 본질적인 위험성으로 인하여
+                        야기되는 개인정보유출에 대해 책임을 지지 않습니다. 이용자는 본인의
+                        개인정보를 보호하기 위해서 자신의 계정과 비밀번호를 적절하게 관리하고, 그에
+                        대한 책임을 져야 합니다.
+                      </li>
+                      <li>
+                        <strong>
+                          제9조. 개인정보 자동수집 장치의 설치, 운영 및 그 거부에 관한 사항
+                        </strong>
+                        회사는 이용자 맞춤 서비스를 제공하기 위해 이용자의 정보를 저장하고 수시로
+                        찾아내는 '쿠키(cookie)' 등을 사용합니다. 쿠키는 회사의 웹사이트
+                        접속 시 자동으로 이용자의 컴퓨터로 전송되는 아주 작은 텍스트 파일로 이용자
+                        컴퓨터의 하드디스크에 저장되기도 합니다. <br />
+                        <br />
+                        가. 쿠키의 사용 목적 <br />- 이용자의 접속 빈도나 방문 시간 분석, 방문 회수
+                        파악 등을 통한 이용자 맞춤형 서비스 제공 <br />
+                        나. 쿠키의 설치/운영 및 거부 <br />
+                        (1) 이용자는 쿠키에 대한 선택권을 가지고 있습니다. 이용자는 웹 브라우저의
+                        설정을 변경하여 모든 쿠키를 허용하거나, 쿠키가 저장될 때마다 확인을
+                        거치거나, 아니면 쿠키의 저장을 거부할 수 있습니다.
+                        <br />
+                        (2) 단, 모든 쿠키의 저장을 거부하는 경우, 쿠키를 통해 회사에서 제공하는
+                        서비스를 이용할 수 없습니다. <br />
+                        (3) 웹 브라우저 상단의 "도구 &gt; 인터넷 옵션 &gt; 개인정보"에서
+                        모든 쿠키를 다 받아들이거나, 쿠키가 설치될 때 통지를 보내도록 하거나, 아니면
+                        모든 쿠키를 거부할 수 있는 선택권을 가질 수 있습니다.
+                      </li>
+                      <li>
+                        <strong>제10조. 개인정보에 관한 민원서비스</strong>
+                        회사는 이용자의 개인정보를 보호하고 개인정보와 관련한 불만을 처리하기 위하여
+                        아래와 같이 관련 부서 및 개인정보관리책임자를 지정하고 있습니다. <br />
+                        <br />
+                        [개인정보 관리책임자] <br />- 성명 : 고영섭 대표이사 <br />- 이메일 :
+                        bears.privacy@doosan.com <br /><br />
+                        [개인정보 관리자] <br />- 성명 : 박진환 마케팅팀
+                        팀장 <br />- 이메일 : bears.privacy@doosan.com
+                        <br />
+                        <br />
+                        [개인정보 담당자] <br />- 성명 : 황인권 마케팅팀 수석 <br />- 이메일 :
+                        bears.privacy@doosan.com <br />
+                        귀하께서는 회사의 서비스를 이용하시며 발생하는 모든 개인정보보호 관련 민원을
+                        개인정보관리책임자 혹은 담당부서로 신고하실 수 있습니다. 회사는 이용자들의
+                        신고사항에 대해 신속하게 충분한 답변을 드릴 것입니다.
+                        <br />
+                        <br />
+                        기타 개인정보침해에 대한 신고나 상담이 필요하신 경우에는 아래 기관에
+                        문의하시기 바랍니다. <br />- 개인정보침해신고센터 (privacy.kisa.or.kr /
+                        국번없이 118) <br />- 대검찰청 사이버수사과 (spo.go.kr / 국번없이 1301)
+                        <br />- 경찰청 사이버안전국 (cyberbureau.police.go.kr / 국번없이 182)
+                        <br />- 개인정보분쟁조정위원회 (kopico.go.kr / 국번없이 1833-6972)
+                      </li>
+                      <li>
+                        <strong>제11조. 개인정보의 열람청구</strong>
+                        회사는 이용자의 개인정보를 보호하고 개인정보의 열람청구를 접수, 처리하기
+                        위하여 다음과 같이 민원처리 콜센터를 운영하고 있습니다.
+                        <br />
+                        <br />
+                        가. E-mail : bears.privacy@doosan.com <br />
+                        나. 전화번호 : 02-2240-1777 <br />
+                        다. FAX : 02-2240-1788 <br />
+                        라. 등기우편 : 서울시 송파구 올림픽로 25 잠실야구장(잠실동 10) 두산베어스
+                      </li>
+                      <li>
+                        <strong>제12조. 링크사이트</strong>
+                        회사는 이용자께 다른 회사의 웹사이트 또는 자료에 대한 링크를 제공할 수
+                        있습니다. 이 경우 회사는 외부사이트 및 자료에 대한 아무런 통제권이 없으므로
+                        그로부터 제공받는 서비스나 자료의 유용성에 대해 책임질 수 없으며 보증할 수
+                        없습니다. 회사가 포함하고 있는 링크를 클릭하여 타 사이트의 페이지로 옮겨갈
+                        경우 해당 사이트의 개인정보보호정책은 회사와 무관하므로 새로 방문한 사이트의
+                        정책을 검토해 보시기 바랍니다.
+                      </li>
+                      <li>
+                        <strong>제13조. 개인정보 처리방침 변경</strong>
+                        회사의 개인정보 처리방침은 정부의 정책 또는 보안기술의 변경에 따라 내용의
+                        추가ㆍ삭제 및 수정이 있을 수 있으며 개정 전에 홈페이지를 통해 고지합니다.
+                        <br />
+                        - 공고일자 : 2024년 02월 01일 <br />
+                        - 시행일자 : 2024년 02월 08일 <br />
+                      </li>
+                    </ul>
+                  </div>
                 </div>
                 <ul className='check_box round small'>
                   <li role='presentation'>
-                    <input type="checkbox" id="agree02" className="check_style" checked={privacyChecked} onChange={()=>setPrivacyChecked(!privacyChecked)}/>
+                    <input type="checkbox" id="agree02" className="check_style" checked={privacyChecked} onChange={() => setPrivacyChecked(!privacyChecked)} />
                     <label htmlFor="agree02"><span>개인정보 수집 및 이용에 대한 약관에 동의합니다.</span></label>
                   </li>
                 </ul>
                 <div class="line_box p_14_24 mt_40">
                   <ul class="check_box round">
                     <li role="presentation">
-                      <input type="checkbox" id="checkAll" className="check_style" checked={allChecked} onChange={handleAllCheck}/>
+                      <input type="checkbox" id="checkAll" className="check_style" checked={allChecked} onChange={handleAllCheck} />
                       <label htmlFor="checkAll"><span>전체 동의합니다.</span></label>
                     </li>
                   </ul>
                 </div>
-                <p style={{fontSize: "0.75rem", fontWeight: "400", lineHeight: "1.3", letterSpacing: "0.02em", marginTop: "8px"}} class="sub-txt info-txt font-13">
+                <p style={{ fontSize: "0.75rem", fontWeight: "400", lineHeight: "1.3", letterSpacing: "0.02em", marginTop: "8px" }} class="sub-txt info-txt font-13">
                   가입하시기 전에 먼저 이용약관 및 개인정보처리방침을 확인해 주시기 바라며,회원님의 신상정보는 정보통신망 이용촉진 등에 관한 법률에 의거 보안이 유지됨을 약속 드립니다.
                 </p>
               </div>
@@ -639,181 +652,118 @@ const SignUpCheck = () => {
           )}
           {step === 1 && (
             <div className="input_form">
-                 <ul id="info_section">
-                  <li className="id_section mb_40">
-                    <div className="area_style">
-                      <label htmlFor="idArea" className="label_style mb_10">아이디</label>
-                      <input ref={idInputRef} type="text" required size={20} value={id}
-                        className="line_box"
-                        placeholder="아이디(E-mail)를 입력해주세요"
-                        onChange={(e)=> {setImmediate(e.target.value);}}
-                        onBlur={handleId} />
-                      <span className={`mes_style ${messages.id.color} mb_10`}>
-                        {messages.id.text}
-                      </span>
-                    </div>
-                  </li>
-                  <hr className="mb_40"/>
-                  <li className="pw_section mb_40">
-                    <div className="area_style">
-                      <label htmlFor="pwArea" className="label_style mb_10">비밀번호</label>
-                      <input ref={pwInputRef} type="password" id="pwArea" required size={20} value={pw} 
-                        className="line_box mb_10"
-                        placeholder="비밀번호를 입력해주세요"
-                        onChange={(e)=>{setPw(e.target.value);}}
-                        onBlur={handlePw} />
-                      <span className={`mes_style ${messages.pw.color} mb_10`}>
-                        {messages.pw.text}
-                      </span>
-                      <p className="help_style">
-                        영문 대소문자/숫자/특수문자 조합, 8자 ~ 16자
-                      </p>
-                    </div>
-                  </li>
-                  <li className="pw_section mb_40">
-                    <div className="area_style">
-                      <label htmlFor="pwArea" className="label_style mb_10">비밀번호 확인</label>
-                      <input ref={pwInputRef} type="password" id="pwArea" required size={20} value={pw2}
-                        className="line_box mb_10"
-                        placeholder="비밀번호를 입력해주세요"
-                        onChange={(e)=>{setPw2(e.target.value);}}
-                        onBlur={handlePw2} />
-                      <span className={`mes_style ${messages.pw2.color} mb_10`}>
-                        {messages.pw2.text}
-                      </span>
-                    </div>
-                  </li>
-                  <hr className="mb_40"/>
-                  <li className="name_section mb_40">
-                    <div className="area_style">
-                      <label htmlFor="nameArea" className='label_style mb_10'>이름</label>
-                      <input ref={nameInputRef} type="text" id="nameArea" required size={20} value={name}
-                        className="line_box mb_10"
-                        onChange={(e) => {setName(e.target.value);}}
-                        onBlur={handleName} />
-                      <span className={`mes_style ${messages.name.color} mb_10`}>
-                        {messages.name.text}
-                      </span>
-                    </div>
-                  </li>
-                  <hr className="mb_40"/>
-                  <li className="phone_section mb_40">
-                    <div className="area_style">
-                      <label htmlFor="phoneArea" className='label_style mb_10'>휴대전화</label>
-                      <select className="line_box">
-                        <option value="none">010</option>
-                        <option value="010"></option>
-                        <option value="011"></option>
-                      </select>
-                      <p className="connect">-</p>
-                      <input ref={phoneInputRef} type="text" id="phoneArea" required size={6} value={phone}
-                        className="line_box_select3"
-                        onChange={(e) => {setPhone(e.target.value);}}
-                        onBlur={handlePhone}
-                      />
-                      <p className="connect">-</p>
-                      <input ref={phoneInputRef} type="text" id="phoneArea" required size={6} value={phone}
-                        className="line_box_select3"
-                        onChange={(e) => {setPhone(e.target.value);}}
-                        onBlur={handlePhone}
-                      />
-                      <span className={`mes_style ${messages.phone.color} mb_10`}>
-                        {messages.phone.text}
-                      </span>
-                    </div>
-                  </li>
-                  <hr className="mb_40"/>
-                  <li className="email-section mb_40">
-                    <div className="area_style">
-                      <label htmlFor="emailArea" className="label_style mb_10">이메일</label>
-                      <input ref={emailInputRef} type="text" id="emailArea" required size={20} value={email}
-                        className="line_box_select2"
-                        onChange={(e) => {setEmail(e.target.value);}}
-                        onBlur={handleEmail}
-                      />
-                      <p className="connect">@</p>
-                      <select className="line_box_select2">
-                        <option value="naver.com">naver.com</option>
-                        <option value="google.com">google.com</option>
-                        <option value="hanmail.net">hanmail.net</option>
-                        <option value="nate.com">nate.com</option>
-                        <option value="kakao.com">kakao.com</option>
-                      </select>
-                      <span className={`mes_style ${messages.email.color} mb_10`}>
-                        {messages.email.text}
-                      </span>
-                    </div>
-                  </li>
-                  <hr className="mb_40"/>
-                  <li className="birth_section mb_40">
-                    <div className="area_style">
-                      <label htmlFor="birthArea" className="label_style mb_10">생년월일</label>
-                      <input type="number" placeholder="년(4자)" className="line_box_select3" />
-                      <select className="line_box_select3">
-                        <option value="">월</option>
-                        <option value="">1월</option>
-                        <option value="">2월</option>
-                        <option value="">3월</option>
-                        <option value="">4월</option>
-                        <option value="">5월</option>
-                        <option value="">6월</option>
-                        <option value="">7월</option>
-                        <option value="">8월</option>
-                        <option value="">9월</option>
-                        <option value="">10월</option>
-                        <option value="">11월</option>
-                        <option value="">12월</option>
-                    </select>
-                    <select className="line_box_select3">
-                    <option value="">일</option>
-                      <option value="">1일</option>
-                      <option value="">2일</option>
-                      <option value="">3일</option>
-                      <option value="">4일</option>
-                      <option value="">5일</option>
-                      <option value="">6일</option>
-                      <option value="">7일</option>
-                      <option value="">8일</option>
-                      <option value="">9일</option>
-                      <option value="">10일</option>
-                      <option value="">11일</option>
-                      <option value="">12일</option>
-                      <option value="">13일</option>
-                      <option value="">14일</option>
-                      <option value="">15일</option>
-                      <option value="">16일</option>
-                      <option value="">17일</option>
-                      <option value="">18일</option>
-                      <option value="">19일</option>
-                      <option value="">20일</option>
-                      <option value="">21일</option>
-                      <option value="">22일</option>
-                      <option value="">23일</option>
-                      <option value="">24일</option>
-                      <option value="">25일</option>
-                      <option value="">26일</option>
-                      <option value="">27일</option>
-                      <option value="">28일</option>
-                      <option value="">29일</option>
-                      <option value="">30일</option>
-                      <option value="">31일</option>
-                    </select>
-                    <span className={`mes_style ${messages.birth.color} mb_10`}>
-                      {messages.birth.text}
+              <ul id="info_section">
+                <li className="id_section mb_40">
+                  <div className="area_style">
+                    <label htmlFor="idArea" className="label_style mb_10">아이디</label>
+                    <input ref={idInputRef} type="text" required size={20} value={id}
+                      className="line_box mb_10"
+                      placeholder="아이디를 입력해주세요"
+                      onChange={(e) => { setId(e.target.value); }}
+                      onBlur={handleId} />
+                    <span className={`mes_style ${messages.id.color} mb_10`}>
+                      {messages.id.text}
                     </span>
+                  </div>
+                </li>
+                <hr className="mb_40" />
+                <li className="pw_section mb_40">
+                  <div className="area_style">
+                    <label htmlFor="pwArea" className="label_style mb_10">비밀번호</label>
+                    <input ref={pwInputRef} type="password" id="pwArea" required size={20} value={pw}
+                      className="line_box mb_10"
+                      placeholder="비밀번호를 입력해주세요"
+                      onChange={(e) => { setPw(e.target.value); }}
+                      onBlur={handlePw} />
+                    <span className={`mes_style ${messages.pw.color} mb_10`}>
+                      {messages.pw.text}
+                    </span>
+                    <p className="help_style">
+                      영문 대소문자/숫자/특수문자 조합, 8자 ~ 16자
+                    </p>
+                  </div>
+                </li>
+                <li className="pw_section mb_40">
+                  <div className="area_style">
+                    <label htmlFor="pwArea" className="label_style mb_10">비밀번호 확인</label>
+                    <input ref={pwInputRef} type="password" id="pwArea" required size={20} value={pw2}
+                      className="line_box mb_10"
+                      placeholder="비밀번호를 입력해주세요"
+                      onChange={(e) => { setPw2(e.target.value); }}
+                      onBlur={handlePw2} />
+                    <span className={`mes_style ${messages.pw2.color} mb_10`}>
+                      {messages.pw2.text}
+                    </span>
+                  </div>
+                </li>
+                <hr className="mb_40" />
+                <li className="name_section mb_40">
+                  <div className="area_style">
+                    <label htmlFor="nameArea" className='label_style mb_10'>이름</label>
+                    <input ref={nameInputRef} type="text" id="nameArea" required size={20} value={name}
+                      className="line_box mb_10"
+                      onChange={(e) => { setName(e.target.value); }}
+                      onBlur={handleName} />
+                    <span className={`mes_style ${messages.name.color} mb_10`}>
+                      {messages.name.text}
+                    </span>
+                  </div>
+                </li>
+                <hr className="mb_40" />
+                <li className="phone_section mb_40">
+                  <div className="area_style">
+                    <label htmlFor="phoneArea" className='label_style mb_10'>휴대전화</label>
+                    <input ref={phoneInputRef} type="text" id="phoneArea" required size={6} value={phone}
+                      className="line_box mb_10"
+                      placeholder="010-1234-5678 형식으로 입력해주세요."
+                      onChange={(e) => { setPhone(e.target.value); }}
+                      onBlur={handlePhone}
+                    />
+                    <span className={`mes_style ${messages.phone.color} mb_10`}>
+                      {messages.phone.text}
+                    </span>
+                  </div>
+                </li>
+                <hr className="mb_40" />
+                <li className="email-section mb_40">
+                  <div className="area_style">
+                    <label htmlFor="emailArea" className="label_style mb_10">이메일</label>
+                    <input ref={emailInputRef} type="text" id="emailArea" required size={20} value={email}
+                      className="line_box mb_10"
+                      onChange={(e) => { setEmail(e.target.value); }}
+                      onBlur={handleEmail}
+                    />
+                    <span className={`mes_style ${messages.email.color} mb_10`}>
+                      {messages.email.text}
+                    </span>
+                  </div>
+                </li>
+                <hr className="mb_40" />
+                <li className="birth_section mb_40">
+                  <div className="area_style">
+                    <label htmlFor="birthArea" className="label_style mb_10">생년월일</label>
+                    <input type="number" placeholder="년도(4자)" className="line_box select3" />
+                    <input type="number" placeholder="월" className="line_box select3" />
+                    <input type="number" placeholder="일" className="line_box select3" />
+                  </div>
+                </li>
+                <hr className="mb_40" />
+                <li className="sex_section mb_40">
+                  <div className="area_style">
+                    <label htmlFor="sexArea" className="label_style mb_10">성별</label>
+                    <div className="select">
+                      <label>
+                        <input className="input_radio" id="male" type="radio" name="sex" value="male" checked />
+                        <span htmlFor="male" >남성</span>
+                      </label>
+                      <label>
+                        <input className="input_radio" type="radio" name="sex" value="female" />
+                        <span htmlFor="female">여성</span>
+                      </label>
                     </div>
-                  </li>
-                  <hr className="mb_40"/>
-                  <li className="sex_section mb_40">
-                    <div className="area_style">
-                      <label htmlFor="sexArea" className="label_style mb_10">성별</label>
-                      <div className="select">
-                        <span><input className="input_radio" type="radio" name="sex" value="male" checked />남성</span>
-                        <span><input className="input_radio" type="radio" name="sex" value="female" />여성</span>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
+                  </div>
+                </li>
+              </ul>
             </div>
           )}
           {step === 2 && (
@@ -831,7 +781,7 @@ const SignUpCheck = () => {
             </div>
           </div>
         </div>
-        </div>
+      </div>
     </div>
   );
 };
