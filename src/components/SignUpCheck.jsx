@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import '../scss/Login.scss';
 
@@ -122,7 +122,7 @@ const SignUpCheck = () => {
 
   const handlePhone = (e) => {
     const newPhoneValue = e.target.value;
-    setName(newPhoneValue);
+    setPhone(newPhoneValue);
     if (phoneRule.test(newPhoneValue)) {
       handleMessageChange(
         "phone",
@@ -141,7 +141,7 @@ const SignUpCheck = () => {
         "휴대전화 번호를 확인해주세요",
         "error_color"
       );
-      setName("");
+      setPhone("");
     }
   };
 
@@ -158,13 +158,16 @@ const SignUpCheck = () => {
     }
   };
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (step === 0) {
       if (termsChecked && privacyChecked) {
         setStep(prevStep => Math.min(prevStep + 1, 2));
+        navigate(`/signup/stepcheck?step=${step + 1}`);
       } else {
-        console.log('에러')
+        console.log('약관 동의가 필요합니다')
       }
     } if (step === 1) {
       if (idRule.test(id) &&
@@ -173,9 +176,14 @@ const SignUpCheck = () => {
         nameRule.test(name) &&
         phoneRule.test(phone) &&
         emailRule.test(email)) {
+        setStep(prevStep => {
+          const nextStep = Math.min(prevStep + 1, 2);
+          navigate(`/signup/stepcheck?step=${nextStep}`);
+          return nextStep;
+        });
         console.log('회원가입을 축하합니다.')
       } else {
-        console.log('에러')
+        console.log('회원정보를 모두 입력해주세요')
       }
     }
   };
@@ -775,9 +783,9 @@ const SignUpCheck = () => {
           )}
           <div className="mt_60">
             <div className="page_btn_wrap">
-              <Link to={`/signup/stepcheck?step=${step}`}>
-                <button className="submit_style btn_join lightNavy" type="submit" disabled={step === 2 || !allChecked} onClick={handleSubmit}>다음</button>
-              </Link>
+              {/* <Link to={`/signup/stepcheck?step=${step}`}> */}
+              <button className="submit_style btn_join lightNavy" type="submit" disabled={step === 2 || !allChecked} onClick={handleSubmit}>다음</button>
+              {/* </Link> */}
             </div>
           </div>
         </div>
