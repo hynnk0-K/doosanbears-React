@@ -28,12 +28,23 @@ html {
   line-height: inherit;
 }
 
+.mb_10{
+  margin-bottom: 10px;
+}
+
 .mt_16 {
   margin-top: 16px;
 }
 
+.mb_40{
+  margin-bottom: 40px;
+}
 .mt_40{
   margin-top: 40px !important;
+}
+
+.mt_60{
+  margin-top: 60px !important;
 }
 
 .mt_80 {
@@ -57,7 +68,7 @@ html {
 }
 
 [class~="lightNavy"] {
-  background-color: #272b3a;
+  background-color: var(--gray-60);
 }
 
 [class~="heading"] {
@@ -123,7 +134,7 @@ button[class*="btn"] {
   color: var(--gray-00);
 }
 
-.btn-wrap+.info-txt, .info-txt, .input-form .info-txt {
+.btn_wrap+.info_txt, .info_txt, .input_form .info_txt {
   font-family: Pretendard, sans-serif;
   color: var(--gray-40);
   margin-top: 10px;
@@ -183,7 +194,7 @@ button[class*="btn"] {
   color: var(--gray-30);
 }
 
-input[type="checkbox" i] {
+/* input[type="checkbox" i] {
   background-color: initial;
   cursor: default;
   appearance: auto;
@@ -191,7 +202,7 @@ input[type="checkbox" i] {
   margin: 3px 3px 3px 4px;
   padding: initial;
   border: initial;
-}
+} */
 
 /* input_form table */
 /* General Table Styles */
