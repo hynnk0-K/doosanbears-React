@@ -1,32 +1,27 @@
 import React, { useState, useEffect } from "react";
-import { Button, Checkbox, Form, Input } from "antd";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAccessToken } from "../components/AccessTokenContext";
 import axios from "axios";
 import { API_URL } from "../config/constants.js";
 import '../scss/Login.scss';
 
 const Login = () => {
-  const [navbarHeight, setNavbarHeight] = useState(0);
-  useEffect(() => {
-    // Navbar의 높이를 동적으로 계산
-    const navbar = document.querySelector("#container");
-    setNavbarHeight(navbar ? navbar.offsetHeight : 0);
-  }, []);
-
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const { setAccessToken } = useAccessToken();
+  const [userId, setUserId] = useState("");
+  const [pw, setPw] = useState("");
 
-  const onFinish = async (values) => {
+  const onSubmit = async (e) => {
+    e.preventDefault();
     setLoading(true);
     try {
       const result = await axios.post(`${API_URL}/users/login`, {
-        user_id: values.user_id,
-        pw: values.password,
+        user_id: userId,
+        pw: pw,
       });
 
-      if (result.data.user === values.user_id && result.data.accessToken) {
+      if (result.data.user === userId && result.data.accessToken) {
         alert("로그인이 성공했습니다.");
         // accessToken을 Context와 localStorage에 저장
         setAccessToken(result.data.accessToken);
@@ -36,8 +31,8 @@ const Login = () => {
       } else {
         alert("로그인 정보를 다시 확인해주세요");
       }
-    } catch (error) {
-      console.error("Login failed", error);
+    } catch (err) {
+      console.error("Login failed", err);
       alert("로그인 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
     } finally {
       setLoading(false);
@@ -48,50 +43,34 @@ const Login = () => {
     console.log("Failed:", errorInfo);
   };
   return (
-    <div className="login" style={{ paddingTop: navbarHeight }}>
+    <div className="login">
       <div className="layout_fix">
         <div className="signUp_layout">
           <div className="heading_up">
             <h2 className="title_up">로그인</h2>
-            <p className="sub">Doosan Bears 로그인</p>
           </div>
-           <div className="login_box">
-            <form onSubmit={onFinish} onFinishFailed={onFinishFailed}>
-              <div className="input-form">
-                <div className="input-wrap">
-                  <div className="input">
-                    <input
-                      id="id"
-                      placeholder="아이디를 입력해 주세요."
-                      type="text"
-                      value={userId}
-                      onChange={(e) => setUserId(e.target.value)} // 상태 변경
-                    />
-                    <label htmlFor="id">아이디</label>
+          <div className="login_box">
+            <form onSubmit={onSubmit} onFinishFailed={onFinishFailed}>
+              <div class="input_form">
+                <div class="input_wrap ">
+                  <div class="input">
+                    {/* <label htmlFor="id" >아이디</label> */}
+                    <input id="user_id" name="user_id" placeholder="아이디를 입력해 주세요." type="text" value={userId} onChange={(e)=>setUserId(e.target.value)} required/>
                   </div>
                 </div>
-                <div className="input-wrap mt-14">
-                  <div className="input">
-                    <input
-                      id="pw"
-                      placeholder="비밀번호를 입력해 주세요."
-                      type="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)} // 상태 변경
-                    />
+                <div class="input_wrap mt_14 ">
+                  <div class="input">
+                    {/* <label htmlFor="pw">비밀번호</label> */}
+                    <input id="pw" name="pw" placeholder="비밀번호를 입력해 주세요." type="password" value={pw} onChange={(e)=>setPw(e.target.value)} required/>
                   </div>
                 </div>
-                <div className="btn-wrap mt-37">
-                  <button
-                    type="submit"
-                    className="btn-bg bg-primary xlarge"
-                    disabled={!userId || !password} // 아이디와 비밀번호 입력 필수
-                  >
+                <div class="btn_wrap mt_37">
+                  <button type="submit" class="btn_bg bg_primary xlarge btn_bg bg_primary" disabled={!userId || !pw}>
                     로그인
                   </button>
                 </div>
-                <ul className="divided-list mt-30">
-                  <li><button type="button">회원가입</button></li>
+                <ul class="divided_list mt_30">
+                  <li><Link to="/signup"><button type="button">회원가입</button></Link></li>
                   <li><button type="button">아이디 찾기</button></li>
                   <li><button type="button">비밀번호 찾기</button></li>
                 </ul>

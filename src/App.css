@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'Assacom';
+  src:url('./fonts/AssacomFreeGothic.woff') format('woff'),
+      url('./fonts/AssacomFreeGothic.woff2') format('woff2');
+} 
+
 .layout_fix {
   max-width: 1240px;
   width: 1240px;
@@ -32,8 +38,20 @@ html {
   margin-bottom: 10px;
 }
 
+.mt_14{
+  margin-top: 14px;
+}
+
 .mt_16 {
   margin-top: 16px;
+}
+
+.mt_30{
+  margin-top: 30px;
+}
+
+.mt_37{
+  margin-top: 37px;
 }
 
 .mb_40 {
@@ -42,6 +60,10 @@ html {
 
 .mt_40 {
   margin-top: 40px !important;
+}
+
+.mr_62{
+  margin-right: 62px;
 }
 
 .mt_60 {
@@ -62,6 +84,9 @@ html {
 
 [class~="red"] {
   background-color: #e4203e;
+}
+.bg_primary {
+  background-color: var(--primary) !important;
 }
 
 [class~="font_red"] {
@@ -325,4 +350,17 @@ table {
 /* signup */
 [class~=line_box].select3 {
   width: 31% !important;
+}
+
+/* login input */
+.input>input[type=email], .input>input[type=number], .input>input[type=password], .input>input[type=text], .input>label+.select, .input>label+.textarea {
+  font-size: .938rem;
+  padding: 14px 20px;
+  color: var(--gray-05);
+  background: var(--gray-60);
+  border-radius: 4px;
+}
+input {
+  border: 0;
+  outline: 0;
 }

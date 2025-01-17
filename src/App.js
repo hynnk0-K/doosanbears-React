@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import SignUpCheck from "./components/SignUpCheck";
 import { AccessTokenProvider } from "./components/AccessTokenContext";
+import BearsIntro from "./pages/BearsIntro";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path={`/signup/stepcheck`} element={<SignUpCheck />} />
+        <Route path={`/bears/intro`} element={<BearsIntro />} />
       </Routes>
       <Footer />
     </AccessTokenProvider>

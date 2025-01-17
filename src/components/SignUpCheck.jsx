@@ -134,7 +134,7 @@ const SignUpCheck = () => {
     const newPwValue = e.target.value;
     setPw(newPwValue);
     if (pwRule.test(newPwValue)) {
-      handleMessageChange("pw", "사용 가능한 비밀번호 입니다.", "success_color");
+      handleMessageChange("pw", "사용 가능한 비밀번호입니다.", "success_color");
     } else if (newPwValue === "") {
       handleMessageChange("pw", "비밀번호를 입력해주세요.", "error_color")
     } else {
@@ -289,69 +289,7 @@ const SignUpCheck = () => {
       }
     }
   };
-  
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (step === 0) {
-  //     if (termsChecked && privacyChecked) {
-  //       setStep(prevStep => Math.min(prevStep + 1, 2));
-  //       navigate(`/signup/stepcheck?step=${step + 1}`);
-  //     } else {
-  //       console.log('약관 동의가 필요합니다')
-  //     }
-  //   } if (step === 1) {
-  //     if(!isIdChecked){
-  //       alert('아이디 중복확인을 진행해주세요.');
-  //       return;
-  //     }
-  //     if (idRule.test(id) &&
-  //     pwRule.test(pw) &&
-  //     pw2 === pw &&
-  //     nameRule.test(name) &&
-  //     phoneRule.test(phone) &&
-  //     emailRule.test(email))
-  //     {
-  //       {
-  //         try{
-  //           axios.post(`${API_URL}/users`, {
-  //             user_id:id,
-  //             pw:pw,
-  //             name:name,
-  //             phone:phone,
-  //             email:email,
-  //             birth:birth,
-  //             marketingChecked: marketingChecked ? "True" : "False"
-  //           }).then((result)=>{
-  //             console.log(result);
-  //             history("/", {replace: true})
-  //           }).catch((err)=>{
-  //             console.error(err);
-  //           })
-  //           setIsSubmitted(true);
-  //           setIsRegistered(true);
-  //           setStep(prevStep => {
-  //             const nextStep = Math.min(prevStep + 1, 2);
-  //             navigate(`/signup/stepcheck?step=${nextStep}`);
-  //             return nextStep;
-  //           })
-  //         }catch(err){
-  //             //db에 회원가입 정보 넣기 실패
-  //             console.log(err);
-  //             setIsSubmitted(true);
-  //             setIsRegistered(false);
-  //           }
-  //         }else{
-  //           console.log('에러')
-  //           setIsSubmitted(true);
-  //           setIsRegistered(false);
-  //         }
-  //       }
-  //       console.log('회원가입을 축하합니다.')
-  //     } else {
-  //       console.log('회원정보를 모두 입력해주세요')
-  //     }
-  //   }
-  // };
+
   return (
     <div className="signup signup_check" style={{ paddingTop: navbarHeight }}>
       <div className="layout_fix">
@@ -834,8 +772,8 @@ const SignUpCheck = () => {
                       placeholder="아이디를 입력해주세요"
                       onChange={(e) => { setId(e.target.value); }}
                       onBlur={handleId} />
-                      <button type="button" onClick={handleIdCheck} className='id_check_button'>중복확인</button>
-                    <span className={`mes_style ${messages.id.color} mb_10`}>
+                      <button type="button" onClick={handleIdCheck} className='id_check_button mt_14' style={{display: "inline-block"}}>중복확인</button>
+                    <span className={`mes_style ${messages.id.color} mb_10`} style={{display: "inline-block", marginLeft: "10px"}}>
                       {messages.id.text}
                     </span>
                   </div>
