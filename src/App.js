@@ -6,10 +6,11 @@ import SignUp from "./pages/SignUp";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import SignUpCheck from "./components/SignUpCheck";
+import { AccessTokenProvider } from "./components/AccessTokenContext";
 
 function App() {
   return (
-    <>
+    <AccessTokenProvider>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -18,7 +19,7 @@ function App() {
         <Route path={`/signup/stepcheck`} element={<SignUpCheck />} />
       </Routes>
       <Footer />
-    </>
+    </AccessTokenProvider>
   );
 }
 

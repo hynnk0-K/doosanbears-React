@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { API_URL } from "../config/constants.js";
 
 import '../scss/Login.scss';
 
@@ -12,6 +14,8 @@ const SignUpCheck = () => {
   }, []);
   //signup 단계
   const [step, setStep] = useState(0);
+
+  const navigate = useNavigate();
 
   //약관동의
   const [termsChecked, setTermsChecked] = useState(false);
@@ -26,11 +30,22 @@ const SignUpCheck = () => {
   const emailInputRef = useRef(null);
 
   const [id, setId] = useState("");
+  const [isIdChecked, setIsIdChecked] = useState(false); //아이디 중복 체크
   const [pw, setPw] = useState("");
   const [pw2, setPw2] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [birth, setBirth] = useState("");
+  const [year, setYear] = useState("");
+  const [month, setMonth] = useState("");
+  const [day, setDay] = useState("");
+  const [sex, setSex] = useState("");
+
+  //회원가입 제출 여부
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  //회원가입완료
+  const [isRegistered, setIsRegistered] = useState(false);
 
   const idRule = /^[a-z0-9]{6,16}$/;
   const pwRule = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$&^*])[a-zA-Z\d!@#$&^*]{8,16}$/;
@@ -46,6 +61,16 @@ const SignUpCheck = () => {
     phone: { text: "", color: "" },
     email: { text: "", color: "" },
   })
+
+  useEffect(()=>{
+    if(isSubmitted){
+      if(isRegistered){
+        alert('회원가입이 완료되었습니다.')
+      }else{
+        alert('회원가입에 실패했습니다.')
+      }
+    }
+  },[isSubmitted, isRegistered])
 
   const handleAllCheck = () => {
     const newAllChecked = !allChecked;
@@ -81,6 +106,30 @@ const SignUpCheck = () => {
       setId("")
     }
   };
+
+  //중복확인
+  const handleIdCheck = async () =>{
+    if(!idRule.test(id)){
+      alert("유효안 아이디를 입력하세요");
+      return;
+    }
+    try{
+      const response = await axios.get(`${API_URL}/users/check-id`, {
+        params: {user_id: id},
+      });
+      if(response.data.success){
+        handleMessageChange('id', '사용 가능한 아이디입니다.', 'success_color');
+        setIsIdChecked(true); //중복확인완료
+      } else{
+        handleMessageChange('id', '이미 사용중인 아이디입니다.', 'error_color');
+        setIsIdChecked(false);
+      }
+    }catch(err){
+      console.error(err);
+      alert('중복 확인에 실패했습니다. 잠시 후 다시 시도해주세요.')
+    }
+  }
+
   const handlePw = (e) => {
     const newPwValue = e.target.value;
     setPw(newPwValue);
@@ -158,35 +207,151 @@ const SignUpCheck = () => {
     }
   };
 
-  const navigate = useNavigate();
+  const handleYearChange = (e) => {
+    const value = e.target.value;
+    setYear(value);
+    updateBirth(value, month, day);
+  };
 
-  const handleSubmit = (e) => {
+  const handleMonthChange = (e) => {
+    const value = e.target.value;
+    setMonth(value);
+    updateBirth(year, value, day);
+  };
+
+  const handleDayChange = (e) => {
+    const value = e.target.value;
+    setDay(value);
+    updateBirth(year, month, value);
+  };
+
+  const updateBirth = (year, month, day) => {
+    // month와 day가 한 자리 숫자인 경우 두 자리로 맞춤
+    const formattedMonth = month.padStart(2, '0');
+    const formattedDay = day.padStart(2, '0');
+    setBirth(`${year}-${formattedMonth}-${formattedDay}`);
+  };
+
+  const handleSex = (e) => {
+    setSex(e.target.value);
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
     if (step === 0) {
       if (termsChecked && privacyChecked) {
         setStep(prevStep => Math.min(prevStep + 1, 2));
         navigate(`/signup/stepcheck?step=${step + 1}`);
       } else {
-        console.log('약관 동의가 필요합니다')
+        console.log('약관 동의가 필요합니다');
       }
-    } if (step === 1) {
+    } else if (step === 1) {
+      if (!isIdChecked) {
+        alert('아이디 중복확인을 진행해주세요.');
+        return;
+      }
+  
       if (idRule.test(id) &&
-        pwRule.test(pw) &&
-        pw2 === pw &&
-        nameRule.test(name) &&
-        phoneRule.test(phone) &&
-        emailRule.test(email)) {
-        setStep(prevStep => {
-          const nextStep = Math.min(prevStep + 1, 2);
-          navigate(`/signup/stepcheck?step=${nextStep}`);
-          return nextStep;
-        });
-        console.log('회원가입을 축하합니다.')
+          pwRule.test(pw) &&
+          pw2 === pw &&
+          nameRule.test(name) &&
+          phoneRule.test(phone) &&
+          emailRule.test(email)) {
+        try {
+          const result = await axios.post(`${API_URL}/users`, {
+            user_id: id,
+            pw: pw,
+            name: name,
+            phone: phone,
+            email: email,
+            birth: birth,
+            sex: sex,
+            marketingChecked: allChecked ? "True" : "False"
+          });
+          console.log(result);
+          setIsSubmitted(true);
+          setIsRegistered(true);
+          setStep(prevStep => {
+            const nextStep = Math.min(prevStep + 1, 2);
+            navigate(`/signup/stepcheck?step=${nextStep}`);
+            return nextStep;
+          });
+          console.log('회원가입을 축하합니다.');
+          navigate("/", { replace: true }); //홈으로 이동
+        } catch (err) {
+          console.error(err);
+          setIsSubmitted(true);
+          setIsRegistered(false);
+        }
       } else {
-        console.log('회원정보를 모두 입력해주세요')
+        console.log('회원정보를 모두 입력해주세요');
       }
     }
   };
+  
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (step === 0) {
+  //     if (termsChecked && privacyChecked) {
+  //       setStep(prevStep => Math.min(prevStep + 1, 2));
+  //       navigate(`/signup/stepcheck?step=${step + 1}`);
+  //     } else {
+  //       console.log('약관 동의가 필요합니다')
+  //     }
+  //   } if (step === 1) {
+  //     if(!isIdChecked){
+  //       alert('아이디 중복확인을 진행해주세요.');
+  //       return;
+  //     }
+  //     if (idRule.test(id) &&
+  //     pwRule.test(pw) &&
+  //     pw2 === pw &&
+  //     nameRule.test(name) &&
+  //     phoneRule.test(phone) &&
+  //     emailRule.test(email))
+  //     {
+  //       {
+  //         try{
+  //           axios.post(`${API_URL}/users`, {
+  //             user_id:id,
+  //             pw:pw,
+  //             name:name,
+  //             phone:phone,
+  //             email:email,
+  //             birth:birth,
+  //             marketingChecked: marketingChecked ? "True" : "False"
+  //           }).then((result)=>{
+  //             console.log(result);
+  //             history("/", {replace: true})
+  //           }).catch((err)=>{
+  //             console.error(err);
+  //           })
+  //           setIsSubmitted(true);
+  //           setIsRegistered(true);
+  //           setStep(prevStep => {
+  //             const nextStep = Math.min(prevStep + 1, 2);
+  //             navigate(`/signup/stepcheck?step=${nextStep}`);
+  //             return nextStep;
+  //           })
+  //         }catch(err){
+  //             //db에 회원가입 정보 넣기 실패
+  //             console.log(err);
+  //             setIsSubmitted(true);
+  //             setIsRegistered(false);
+  //           }
+  //         }else{
+  //           console.log('에러')
+  //           setIsSubmitted(true);
+  //           setIsRegistered(false);
+  //         }
+  //       }
+  //       console.log('회원가입을 축하합니다.')
+  //     } else {
+  //       console.log('회원정보를 모두 입력해주세요')
+  //     }
+  //   }
+  // };
   return (
     <div className="signup signup_check" style={{ paddingTop: navbarHeight }}>
       <div className="layout_fix">
@@ -669,6 +834,7 @@ const SignUpCheck = () => {
                       placeholder="아이디를 입력해주세요"
                       onChange={(e) => { setId(e.target.value); }}
                       onBlur={handleId} />
+                      <button type="button" onClick={handleIdCheck} className='id_check_button'>중복확인</button>
                     <span className={`mes_style ${messages.id.color} mb_10`}>
                       {messages.id.text}
                     </span>
@@ -750,9 +916,9 @@ const SignUpCheck = () => {
                 <li className="birth_section mb_40">
                   <div className="area_style">
                     <label htmlFor="birthArea" className="label_style mb_10">생년월일</label>
-                    <input type="number" placeholder="년도(4자)" className="line_box select3" />
-                    <input type="number" placeholder="월" className="line_box select3" />
-                    <input type="number" placeholder="일" className="line_box select3" />
+                    <input type="number" placeholder="년도(4자)" className="line_box select3" value={year} onChange={handleYearChange}/>
+                    <input type="number" placeholder="월" className="line_box select3" value={month} onChange={handleMonthChange}/>
+                    <input type="number" placeholder="일" className="line_box select3" value={day} onChange={handleDayChange} />
                   </div>
                 </li>
                 <hr className="mb_40" />
@@ -761,11 +927,11 @@ const SignUpCheck = () => {
                     <label htmlFor="sexArea" className="label_style mb_10">성별</label>
                     <div className="select">
                       <label>
-                        <input className="input_radio" id="male" type="radio" name="sex" value="male" checked />
+                        <input className="input_radio" id="male" type="radio" name="sex" value="male" checked onChange={handleSex} />
                         <span htmlFor="male" >남성</span>
                       </label>
                       <label>
-                        <input className="input_radio" type="radio" name="sex" value="female" />
+                        <input className="input_radio" type="radio" name="sex" value="female" onChange={handleSex} />
                         <span htmlFor="female">여성</span>
                       </label>
                     </div>

@@ -49,44 +49,56 @@ const Login = () => {
   };
   return (
     <div className="login" style={{ paddingTop: navbarHeight }}>
-      <h2>로그인</h2>
-      <div className="loginBox">
-        <Form
-          name="basic"
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 16 }}
-          style={{ maxWidth: 600 }}
-          initialValues={{ remember: true }}
-          onFinish={onFinish}
-          onFinishFailed={onFinishFailed}
-          autoComplete="off"
-        >
-          <Form.Item
-            label="아이디"
-            name="user_id"
-            rules={[{ required: true, message: "Please input your username!" }]}
-          >
-            <Input />
-          </Form.Item>
-
-          <Form.Item
-            label="비밀번호"
-            name="password"
-            rules={[{ required: true, message: "Please input your password!" }]}
-          >
-            <Input.Password />
-          </Form.Item>
-
-          <Form.Item name="remember" valuePropName="checked" label={null}>
-            <Checkbox danger>아이디 저장</Checkbox>
-          </Form.Item>
-
-          <Form.Item label={null}>
-            <Button type="primary" danger htmlType="submit">
-              로그인
-            </Button>
-          </Form.Item>
-        </Form>
+      <div className="layout_fix">
+        <div className="signUp_layout">
+          <div className="heading_up">
+            <h2 className="title_up">로그인</h2>
+            <p className="sub">Doosan Bears 로그인</p>
+          </div>
+           <div className="login_box">
+            <form onSubmit={onFinish} onFinishFailed={onFinishFailed}>
+              <div className="input-form">
+                <div className="input-wrap">
+                  <div className="input">
+                    <input
+                      id="id"
+                      placeholder="아이디를 입력해 주세요."
+                      type="text"
+                      value={userId}
+                      onChange={(e) => setUserId(e.target.value)} // 상태 변경
+                    />
+                    <label htmlFor="id">아이디</label>
+                  </div>
+                </div>
+                <div className="input-wrap mt-14">
+                  <div className="input">
+                    <input
+                      id="pw"
+                      placeholder="비밀번호를 입력해 주세요."
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)} // 상태 변경
+                    />
+                  </div>
+                </div>
+                <div className="btn-wrap mt-37">
+                  <button
+                    type="submit"
+                    className="btn-bg bg-primary xlarge"
+                    disabled={!userId || !password} // 아이디와 비밀번호 입력 필수
+                  >
+                    로그인
+                  </button>
+                </div>
+                <ul className="divided-list mt-30">
+                  <li><button type="button">회원가입</button></li>
+                  <li><button type="button">아이디 찾기</button></li>
+                  <li><button type="button">비밀번호 찾기</button></li>
+                </ul>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   );
