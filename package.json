@@ -15,7 +15,7 @@
     "react-scripts": "5.0.1",
     "react-youtube": "^10.1.0",
     "sass": "^1.83.0",
-    "swiper": "^11.2.0"
+    "swiper": "^11.2.1"
   },
   "scripts": {
     "start": "react-scripts start",

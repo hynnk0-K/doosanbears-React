@@ -140,7 +140,7 @@
     .weekly_schedule {
       margin-left: 20px;
 
-      >p {
+      > p {
         margin-bottom: 12px;
         font-size: 13px;
         font-weight: 300;
@@ -219,7 +219,7 @@
   background-color: #222232;
 
   .heading {
-    >a {
+    > a {
       color: #888888;
       font-size: 13px;
     }
@@ -292,8 +292,96 @@
 
 .home_Events {
   padding: 70px 0;
+  .contents {
+    width: 100%;
+    ul {
+      display: flex;
+      gap: 25px;
+      .events {
+        width: 33%;
+        .banner_img {
+          width: 100%;
+          margin-bottom: 30px;
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+          }
+        }
+        .banner_text {
+          .date {
+            font-size: 0.875rem;
+            font-weight: 200;
+          }
+          .tit {
+            margin: 15px 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+          }
+          button {
+            font-size: 0.8rem;
+            font-weight: 200;
+            color: var(--gray-30);
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
 
-  .heading {
-    h2 {}
+.home_Gallery {
+  padding: 70px 0;
+  background: url(../images/bg_gallery_main_web.png) no-repeat 0 0;
+  height: 718px;
+  .contents {
+    .gallery {
+      width: 384px;
+      height: 460px;
+      position: relative;
+      .img {
+        width: 384px;
+        height: 460px;
+        border-radius: 4px;
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 4px;
+        }
+        &::after{
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(180deg, transparent 48.15%, #000);
+          border-radius: 4px;
+          opacity: .6;
+          z-index: 1;
+        }
+      }
+      .text {
+        position: absolute;
+        padding: 0 24px;
+        bottom: 22px;
+        z-index: 8;
+        .tit{
+          font-size: 1.375rem;
+          font-weight: 600;
+          text-overflow: ellipsis;
+          line-height: 1.2;
+        }
+        .txt{
+          margin-top: 12px;
+          color: var(--gray-30);
+          font-size: 0.75rem;
+          span{
+            margin-right: 10px;
+          }
+        }
+      }
+    }
   }
 }

@@ -102,12 +102,15 @@ const Navbar = () => {
                     </ul>
                   </li>
                   <li className=" ">
-                    <button onClick={toggleBottomActive}>STATS</button>
+                    <button onClick={toggleBottomActive}>EVENT</button>
                     <ul className="header_depth_2">
-                      <li><a href="/stats/team">팀기록</a></li>
+                      <li><a href="/event/bearstv">BEARS TV</a></li>
+                      <li><a href="/event/gallery">갤러리</a></li>
+                      <li><a href="/event/event">이벤트</a></li>
+                      {/* <li><a href="/stats/team">팀기록</a></li>
                       <li><a href="/stats/player">선수기록</a></li>
                       <li><a href="/stats/expect">예상달성기록</a></li>
-                      <li><a href="/stats/history">역대구단성적</a></li>
+                      <li><a href="/stats/history">역대구단성적</a></li> */}
                     </ul>
                   </li>
                   <li className=" ">
@@ -122,10 +125,10 @@ const Navbar = () => {
                   <li className=" ">
                     <button onClick={toggleBottomActive}>두런두런</button>
                     <ul className="header_depth_2">
-                      <li><a href="/doorundoorun/blog">블로그</a></li>
+                      {/* <li><a href="/doorundoorun/blog">블로그</a></li>
                       <li><a href="/doorundoorun/bearstv">BEARS TV</a></li>
                       <li><a href="/doorundoorun/gallery">갤러리</a></li>
-                      <li><a href="/doorundoorun/event">이벤트</a></li>
+                      <li><a href="/doorundoorun/event">이벤트</a></li> */}
                       <li><a href="/doorundoorun/notice">공지사항</a></li>
                       <li><a href="/doorundoorun/faq">FAQ</a></li>
                       <li><a href="/doorundoorun/news">구단소식</a></li>

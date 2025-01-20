@@ -4,6 +4,10 @@
       url('./fonts/AssacomFreeGothic.woff2') format('woff2');
 } 
 
+body {
+  overflow-y: scroll; /* 스크롤바 항상 표시 */
+}
+
 .layout_fix {
   max-width: 1240px;
   width: 1240px;

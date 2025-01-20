@@ -4,8 +4,11 @@ import HomeVideo from "../components/HomeVideo.jsx";
 import HomeSns from "../components/HomeSns.jsx";
 import HomeBearsVideo from "../components/HomeBearsVideo.jsx";
 import { Link } from "react-router-dom";
+import HomeEvents from "../components/HomeEvents.jsx";
+import HomeGallery from "../components/HomeGallery.jsx";
 
 const Home = () => {
+
   return (
     <>
       <div className="homeContainer">
@@ -173,9 +176,19 @@ const Home = () => {
       <div className="home_Events">
         <div className="layout_fix">
           <div className="heading">
-            <h2 className="title">EVENT</h2>
+            <h2 className="title">이벤트</h2>
             <Link to="/events">더보기</Link>
           </div>
+          <HomeEvents />
+        </div>
+      </div>
+      <div className="home_Gallery">
+        <div className="layout_fix">
+          <div className="heading">
+            <h2 className="title">갤러리</h2>
+            <Link to="/gallery">더보기</Link>
+          </div>
+          <HomeGallery />
         </div>
       </div>
     </>
