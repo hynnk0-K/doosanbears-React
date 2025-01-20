@@ -12,6 +12,7 @@ const SignUpCheck = () => {
     const navbar = document.querySelector("#container");
     setNavbarHeight(navbar ? navbar.offsetHeight : 0);
   }, []);
+  
   //signup 단계
   const [step, setStep] = useState(0);
 

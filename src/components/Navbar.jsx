@@ -86,52 +86,52 @@ const Navbar = () => {
                   <li className=" ">
                     <button onClick={toggleBottomActive}>PLAYER</button>
                     <ul className="header_depth_2">
-                      <li><a href="/member/coachStaff">코칭스태프</a></li>
-                      <li><a href="/member/pitchers">투수</a></li>
-                      <li><a href="/member/batters">타자</a></li>
-                      <li><a href="/member/armyplayers">군입대</a></li>
-                      <li><a href="/member/education">육성선수</a></li>
+                      <li><Link to="/member/coachStaff">코칭스태프</Link></li>
+                      <li><Link to="/member/pitchers">투수</Link></li>
+                      <li><Link to="/member/batters">타자</Link></li>
+                      <li><Link to="/member/armyplayers">군입대</Link></li>
+                      <li><Link to="/member/education">육성선수</Link></li>
                     </ul>
                   </li>
                   <li className="mr_62">
                     <button onClick={toggleBottomActive}>GAME</button>
                     <ul className="header_depth_2">
-                      <li><a href="/game/first">1군 경기일정</a></li>
-                      <li><a href="/game/futures">퓨처스 경기일정</a></li>
-                      <li><a href="/game/cheering">응원단</a></li>
+                      <li><Link to="/game/first">1군 경기일정</Link></li>
+                      <li><Link to="/game/futures">퓨처스 경기일정</Link></li>
+                      <li><Link to="/game/cheering">응원단</Link></li>
                     </ul>
                   </li>
                   <li className=" ">
                     <button onClick={toggleBottomActive}>EVENT</button>
                     <ul className="header_depth_2">
-                      <li><a href="/event/bearstv">BEARS TV</a></li>
-                      <li><a href="/event/gallery">갤러리</a></li>
-                      <li><a href="/event/event">이벤트</a></li>
-                      {/* <li><a href="/stats/team">팀기록</a></li>
-                      <li><a href="/stats/player">선수기록</a></li>
-                      <li><a href="/stats/expect">예상달성기록</a></li>
-                      <li><a href="/stats/history">역대구단성적</a></li> */}
+                      <li><Link to="/event/bearstv">BEARS TV</Link></li>
+                      <li><Link to="/event/gallery">갤러리</Link></li>
+                      <li><Link to="/event/event">이벤트</Link></li>
+                      {/* <li><Link to="/stats/team">팀기록</Link></li>
+                      <li><Link to="/stats/player">선수기록</Link></li>
+                      <li><Link to="/stats/expect">예상달성기록</Link></li>
+                      <li><Link to="/stats/history">역대구단성적</Link></li> */}
                     </ul>
                   </li>
                   <li className=" ">
                     <button onClick={toggleBottomActive}>TICKET</button>
                     <ul className="header_depth_2">
-                      <li><a href="/ticket/reserve">티켓예매</a></li>
-                      <li><a href="/ticket/group">단체관람</a></li>
-                      <li><a href="/ticket/lounge">베어스라운지</a></li>
-                      <li><a href="/ticket/season">시즌권</a></li>
+                      <li><Link to="/ticket/reserve">티켓예매</Link></li>
+                      <li><Link to="/ticket/group">단체관람</Link></li>
+                      <li><Link to="/ticket/lounge">베어스라운지</Link></li>
+                      <li><Link to="/ticket/season">시즌권</Link></li>
                     </ul>
                   </li>
                   <li className=" ">
                     <button onClick={toggleBottomActive}>두런두런</button>
                     <ul className="header_depth_2">
-                      {/* <li><a href="/doorundoorun/blog">블로그</a></li>
-                      <li><a href="/doorundoorun/bearstv">BEARS TV</a></li>
-                      <li><a href="/doorundoorun/gallery">갤러리</a></li>
-                      <li><a href="/doorundoorun/event">이벤트</a></li> */}
-                      <li><a href="/doorundoorun/notice">공지사항</a></li>
-                      <li><a href="/doorundoorun/faq">FAQ</a></li>
-                      <li><a href="/doorundoorun/news">구단소식</a></li>
+                      {/* <li><Link to="/doorundoorun/blog">블로그</Link></li>
+                      <li><Link to="/doorundoorun/bearstv">BEARS TV</Link></li>
+                      <li><Link to="/doorundoorun/gallery">갤러리</Link></li>
+                      <li><Link to="/doorundoorun/event">이벤트</Link></li> */}
+                      <li><Link to="/doorundoorun/notice">공지사항</Link></li>
+                      <li><Link to="/doorundoorun/faq">FAQ</Link></li>
+                      <li><Link to="/doorundoorun/news">구단소식</Link></li>
                     </ul>
                   </li>
                 </ul>
