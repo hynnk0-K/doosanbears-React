@@ -12,8 +12,8 @@ export const isActiveToken = async (accessToken) => {
   try {
     const response = await axios.post(`${API_URL}/auth`, { accessToken });
     const result = response.data.result;
-    if (result.id) {
-      return { accessResult: true, user_id: result.id };
+    if (result.user_id) {
+      return { accessResult: true, user_id: result.user_id };
     } else {
       return { accessResult: false };
     }
