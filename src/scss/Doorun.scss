@@ -1,6 +1,8 @@
 .tab_content{
-  // 공지사항
-  .notice{
+  // 공지사항. faq
+  .notice, 
+  .faq,
+  .news{
     .inner{
       margin: 0 auto;
       height: 100%;
@@ -71,6 +73,12 @@
           -ms-flex-pack: center;
           -webkit-box-align: center;
           -ms-flex-align: center;
+          .first{
+            margin-right: 16px;
+          }
+          .last{
+            margin-left: 16px;
+          }
           .pages{
             display: flex;
             gap: 8px;
@@ -96,14 +104,13 @@
             }
           }
         }
-        br{
-
-        }
       }
     }
   }
   //공지사항 디테일
-  .notice_detail{
+  .notice_detail,
+  .faq_detail,
+  .news_detail{
     margin-top: -80px;
     .list_view{
       margin-top: 80px;
@@ -234,9 +241,8 @@
 }
 
 .pagination .first, .pagination .last{
-  margin-left: 16px;
-    background: url(/images/ico_arrow_double.svg) no-repeat 50%;
-    background-size: 100%;
+  background: url(/images/ico_arrow_double.svg) no-repeat 50%;
+  background-size: 100%;
 }
 
 .pagination .next, .pagination .prev {

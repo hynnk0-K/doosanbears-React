@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import noticeData from '../../data/noticeData.json';
+import noticeData from "../../data/noticeData.json";
 
 const Notice = () => {
   const location = useLocation();
@@ -67,7 +67,6 @@ const Notice = () => {
             <button className="next" title="다음" onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}></button>
             <button className="last" title="마지막" onClick={() => handlePageChange(totalPages)} disabled={currentPage === totalPages}></button>
           </div>
-          <br/>
         </section>
       </div>
     </section>
