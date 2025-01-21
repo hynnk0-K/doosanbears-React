@@ -4,6 +4,7 @@ import ResultNo from '../ResultNo';
 const Batters = () => {
   return (
     <div>
+      타자
       <ResultNo />
     </div>
   );

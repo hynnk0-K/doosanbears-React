@@ -1,12 +1,13 @@
 import React from 'react';
 import ResultNo from '../ResultNo';
 
-const Linkmyplayers = () => {
+const ArmyPlayers = () => {
   return (
     <div>
+      군입대
       <ResultNo />
     </div>
   );
 };
 
-export default Linkmyplayers;
+export default ArmyPlayers;

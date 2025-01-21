@@ -74,39 +74,36 @@ const Navbar = () => {
                   <li className=" ">
                     <button onClick={toggleBottomActive}>BEARS</button>
                     <ul className="header_depth_2">
-                      <li><Link to="/bears/intro">구단소개 </Link></li>
-                      <li><Link to="/bears/story">베어스 스토리</Link></li>
-                      <li><Link to="/bears/brand">베어스 브랜드</Link></li>
-                      <li><Link to="/bears/stadium">베어스 홈구장</Link></li>
-                      <li><Link to="/bears/social">사회공헌</Link></li>
-                      <li><Link to="/bears/partner">스폰/제휴사 소개</Link></li>
-                      <li><Link to="/bears/announce">전자공고</Link></li>
+                      <li onClick={handleDimdClick}><Link to="/bears/intro">구단소개 </Link></li>
+                      <li onClick={handleDimdClick}><Link to="/bears/story">베어스 스토리</Link></li>
+                      <li onClick={handleDimdClick}><Link to="/bears/brand">베어스 브랜드</Link></li>
+                      <li onClick={handleDimdClick}><Link to="/bears/stadium">베어스 홈구장</Link></li>
                     </ul>
                   </li>
                   <li className=" ">
                     <button onClick={toggleBottomActive}>PLAYER</button>
                     <ul className="header_depth_2">
-                      <li><Link to="/member/coachStaff">코칭스태프</Link></li>
-                      <li><Link to="/member/pitchers">투수</Link></li>
-                      <li><Link to="/member/batters">타자</Link></li>
-                      <li><Link to="/member/armyplayers">군입대</Link></li>
-                      <li><Link to="/member/education">육성선수</Link></li>
+                      <li onClick={handleDimdClick}><Link to="/member/coachStaff">코칭스태프</Link></li>
+                      <li onClick={handleDimdClick}><Link to="/member/pitchers">투수</Link></li>
+                      <li onClick={handleDimdClick}><Link to="/member/batters">타자</Link></li>
+                      <li onClick={handleDimdClick}><Link to="/member/armyplayers">군입대</Link></li>
+                      <li onClick={handleDimdClick}><Link to="/member/education">육성선수</Link></li>
                     </ul>
                   </li>
                   <li className="mr_62">
                     <button onClick={toggleBottomActive}>GAME</button>
                     <ul className="header_depth_2">
-                      <li><Link to="/game/first">1군 경기일정</Link></li>
-                      <li><Link to="/game/futures">퓨처스 경기일정</Link></li>
-                      <li><Link to="/game/cheering">응원단</Link></li>
+                      <li onClick={handleDimdClick}><Link to="/game/first">1군 경기일정</Link></li>
+                      <li onClick={handleDimdClick}><Link to="/game/futures">퓨처스 경기일정</Link></li>
+                      <li onClick={handleDimdClick}><Link to="/game/cheering">응원단</Link></li>
                     </ul>
                   </li>
                   <li className=" ">
                     <button onClick={toggleBottomActive}>EVENT</button>
                     <ul className="header_depth_2">
-                      <li><Link to="/event/bearstv">BEARS TV</Link></li>
-                      <li><Link to="/event/gallery">갤러리</Link></li>
-                      <li><Link to="/event/event">이벤트</Link></li>
+                      <li onClick={handleDimdClick}><Link to="/event/bearstv">BEARS TV</Link></li>
+                      <li onClick={handleDimdClick}><Link to="/event/gallery">갤러리</Link></li>
+                      <li onClick={handleDimdClick}><Link to="/event/events">이벤트</Link></li>
                       {/* <li><Link to="/stats/team">팀기록</Link></li>
                       <li><Link to="/stats/player">선수기록</Link></li>
                       <li><Link to="/stats/expect">예상달성기록</Link></li>
@@ -116,22 +113,18 @@ const Navbar = () => {
                   <li className=" ">
                     <button onClick={toggleBottomActive}>TICKET</button>
                     <ul className="header_depth_2">
-                      <li><Link to="/ticket/reserve">티켓예매</Link></li>
-                      <li><Link to="/ticket/group">단체관람</Link></li>
-                      <li><Link to="/ticket/lounge">베어스라운지</Link></li>
-                      <li><Link to="/ticket/season">시즌권</Link></li>
+                      <li onClick={handleDimdClick}><Link to="/ticket/reserve">티켓예매</Link></li>
+                      <li onClick={handleDimdClick}><Link to="/ticket/group">단체관람</Link></li>
+                      <li onClick={handleDimdClick}><Link to="/ticket/lounge">베어스라운지</Link></li>
+                      <li onClick={handleDimdClick}><Link to="/ticket/season">시즌권</Link></li>
                     </ul>
                   </li>
                   <li className=" ">
                     <button onClick={toggleBottomActive}>두런두런</button>
                     <ul className="header_depth_2">
-                      {/* <li><Link to="/doorundoorun/blog">블로그</Link></li>
-                      <li><Link to="/doorundoorun/bearstv">BEARS TV</Link></li>
-                      <li><Link to="/doorundoorun/gallery">갤러리</Link></li>
-                      <li><Link to="/doorundoorun/event">이벤트</Link></li> */}
-                      <li><Link to="/doorundoorun/notice">공지사항</Link></li>
-                      <li><Link to="/doorundoorun/faq">FAQ</Link></li>
-                      <li><Link to="/doorundoorun/news">구단소식</Link></li>
+                      <li onClick={handleDimdClick}><Link to="/doorundoorun/notice">공지사항</Link></li>
+                      <li onClick={handleDimdClick}><Link to="/doorundoorun/faq">FAQ</Link></li>
+                      <li onClick={handleDimdClick}><Link to="/doorundoorun/news">구단소식</Link></li>
                     </ul>
                   </li>
                 </ul>

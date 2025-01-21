@@ -1,0 +1,257 @@
+.tab_content{
+  // 공지사항
+  .notice{
+    .inner{
+      margin: 0 auto;
+      height: 100%;
+      width: 100%;
+      max-width: 1200px;
+      section{
+        .list_top{
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          margin-bottom: 24px;
+          .num{
+            font-family: Pretendard, sans-serif;
+            font-size: .938rem;
+            color: var(--gray-30);
+            text-align: right;
+            flex: 1 1;
+            strong{
+              font-weight: 600;
+            }
+          }
+        }
+        .list_box{
+          display: flex;
+          flex-direction: column;
+          border-top: 1px solid var(--gray-50);
+          li{
+            border-bottom: 1px solid var(--gray-50);
+            .pop_open{
+              display: flex;
+              align-items: center;  
+              gap: 16px;
+              padding: 24px 0;
+              .txt_area{
+                flex: 1 1;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                .tit{
+                  font-family: Pretendard, sans-serif;
+                  font-size: 1rem;
+                  overflow: hidden;
+                  white-space: normal;
+                  text-overflow: ellipsis;
+                  display: -webkit-box;
+                  -webkit-line-clamp: 1;
+                  -webkit-box-orient: vertical;
+                }
+                .txt{
+                  font-family: Pretendard, sans-serif;
+                  font-size: .875rem;
+                  display: flex;
+                  flex-wrap: wrap;
+                  gap: 12px;
+                  color: var(--gray-40);
+                }
+              }
+            }
+          }
+        }
+        .pagination{
+          display: flex;
+          margin-top: 60px;
+          align-items: center;
+          justify-content: center;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          .pages{
+            display: flex;
+            gap: 8px;
+            margin: 0 11px;
+            button{
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              -webkit-box-align: center;
+              -ms-flex-align: center;
+              -webkit-box-pack: center;
+              -ms-flex-pack: center;
+              width: 30px;
+              height: 30px;
+              font-size: .938rem;
+              color: var(--gray-30);
+              font-weight: 500;
+            }
+            button.on{
+              color: var(--gray-10);
+              background: var(--primary);
+              border-radius: 50%;
+            }
+          }
+        }
+        br{
+
+        }
+      }
+    }
+  }
+  //공지사항 디테일
+  .notice_detail{
+    margin-top: -80px;
+    .list_view{
+      margin-top: 80px;
+      .top{
+        padding: 34px 0 29px;
+        border-bottom: 1px solid var(--gray-60);
+        background: rgba(39, 43, 58, .5);
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        .inner{
+          display: flex;
+          align-items: center;
+          gap: 40px;
+          height: 100%;
+          width: 100%;
+          max-width: 1200px;
+          .txt_area{
+            flex: 1 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            .tit{
+              font-size: 1.375rem;
+              font-weight: 600;
+              color: var(--gray-10);
+            }
+            .txt{
+              display: flex;
+              flex-wrap: wrap;
+              gap: 8px;
+              font-family: Pretendard, sans-serif;
+              font-size: 1rem;
+              color: var(--gray-40);
+            }
+          }
+          .btn_back{
+            height: 40px;
+            min-width: 100px;
+            padding: 0 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1rem;
+            background-color: var(--gray-60);
+            border: 1px solid var(--gray-40);
+            color: var(--gray-00);
+          }
+        }
+      }
+      .bottom{
+        padding: 80px 0;
+        min-height: 480px;
+        .inner{
+          padding: 0 100px;
+          height: 100%;
+          width: 100%;
+          max-width: 1200px;
+          p{
+            display: flex;
+            justify-content: center;
+            img{
+              display: block;
+              width: 100%;
+              height: auto;
+            }
+            &:not(img){
+              font-family: Pretendard, sans-serif;
+              font-size: 1rem;
+              line-height: 1.6;
+              color: var(--gray-30);
+            }
+          }
+        }
+      }
+    }
+    .post_nav{
+      border-top: 1px solid var(--gray-50);
+      border-bottom: 1px solid var(--gray-50);
+      max-width: 1240px;
+      width: 1240px;
+      height: 100%;
+      margin: 0 auto;
+      .prev,
+      .next{
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 26px;
+        display: flex;
+        align-items: center;
+        height: 60px;
+        border-bottom: 1px solid var(--gray-60);
+        >button{
+          transform: rotate(-90deg);
+        }
+        span{
+          width: 50px;
+          margin: 0 26px 0 44px;
+          font-size: 0.942rem;
+        }
+        .prev_tit,
+        .next_tit{
+          button{
+            font-size: 0.942rem;
+            font-weight: 400;
+          }
+        }
+      }
+      .next{
+        >button{
+          transform: rotate(90deg);
+        }
+      }
+    }
+  }
+
+}
+
+.pagination .first, .pagination .last, .pagination .next, .pagination .prev {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  width: 24px;
+  height: 24px;
+}
+
+.pagination .first, .pagination .last{
+  margin-left: 16px;
+    background: url(/images/ico_arrow_double.svg) no-repeat 50%;
+    background-size: 100%;
+}
+
+.pagination .next, .pagination .prev {
+  background: url(/images/ico_arrow.svg) no-repeat 50%;
+  background-size: 100%;
+}
+
+.pagination .first, .pagination .prev {
+  transform: rotate(180deg);
+}
+
+.post_nav .prev>button, .post_nav .next>button{
+  width: 20px;
+  height: 20px;
+  font-size: 0;
+  background: url(../images/ico_arrow.svg) no-repeat;
+  background-size: contain;
+}

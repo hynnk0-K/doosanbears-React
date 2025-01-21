@@ -16,10 +16,10 @@ const Footer = () => {
                         </ul>
                     </div>
                     <div class="btn_wrap">
-                        <button type="button" class="btn_bg round"><img src={process.env.PUBLIC_URL + "./images/facebook_logo.png"} alt="facebookLogo"/><span class="hide">페이스북</span></button>
-                        <button type="button" class="btn_bg round"><img src={process.env.PUBLIC_URL + "./images/x_logo.png"} alt="xLogo" /><span class="hide">트위터</span></button>
-                        <button type="button" class="btn_bg round"><img src={process.env.PUBLIC_URL + "./images/instagram_logo.png"} alt="instaLogo"/><span class="hide">인스타그램</span></button>
-                        <button type="button" class="btn_bg round"><img src={process.env.PUBLIC_URL + "./images/youtube_logo.png"} alt="youtubeLogo" /><span class="hide">유튜브</span></button>
+                        <button type="button" class="btn_bg round"><img src={process.env.PUBLIC_URL + "/images/facebook_logo.png"} alt="facebookLogo"/><span class="hide">페이스북</span></button>
+                        <button type="button" class="btn_bg round"><img src={process.env.PUBLIC_URL + "/images/x_logo.png"} alt="xLogo" /><span class="hide">트위터</span></button>
+                        <button type="button" class="btn_bg round"><img src={process.env.PUBLIC_URL + "/images/instagram_logo.png"} alt="instaLogo"/><span class="hide">인스타그램</span></button>
+                        <button type="button" class="btn_bg round"><img src={process.env.PUBLIC_URL + "/images/youtube_logo.png"} alt="youtubeLogo" /><span class="hide">유튜브</span></button>
                     </div>
                 </div>
             </div>
@@ -35,9 +35,9 @@ const Footer = () => {
                     </div>
                     <div class="right">
                         <img alt="nice 고객지키미 개인정보보호 배상책임보험 기업" loading="lazy" width="60" height="60" decoding="async" data-nimg="1" style={{color:"transparent"}} 
-                        srcset={process.env.PUBLIC_URL + "./images/image.webp"} type="image/webp" src={process.env.PUBLIC_URL + "./images/image.webp"}/>
+                        srcset={process.env.PUBLIC_URL + "/images/image.webp"} type="image/webp" src={process.env.PUBLIC_URL + "/images/image.webp"}/>
                         <img alt="두산" loading="lazy" width="160" height="21" decoding="async" data-nimg="1" className="logo_doosan" 
-                        style={{color:"transparent"}} src={process.env.PUBLIC_URL + "./images/logo_dosan_gray.svg"}/>
+                        style={{color:"transparent"}} src={process.env.PUBLIC_URL + "/images/logo_dosan_gray.svg"}/>
                         <p>DOOSAN BEARS is operated by<br/>DOOSAN BEARS Inc.</p>
                     </div>
                 </div>
