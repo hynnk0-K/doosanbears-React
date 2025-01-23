@@ -4,6 +4,8 @@ import BearsTv from '../components/Event/BearsTv';
 import Gallery from '../components/Event/Gallery';
 import Events from '../components/Event/Events';
 
+import '../scss/Doorun.scss';
+
 const Event = () => {
   const location = useLocation();
     const [activeTab, setActiveTab] = useState(0); // 현재 활성화된 탭의 인덱스
@@ -34,7 +36,7 @@ const Event = () => {
           <li className={`${activeTab === 2 ? "on" : ""}`}><Link to="/event/events">이벤트</Link></li>
         </ul>
       </section>
-      <div className="tab_content" style={{textAlign: "center"}}>
+      <div className="tab_content">
         {activeTab === 0 && <BearsTv />}
         {activeTab === 1 && <Gallery />}
         {activeTab === 2 && <Events />}

@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "title": "두산베어스와 함께하는 사랑의 연탄 나르기 행사",
+    "date": "2024-11-25",
+    "img": "db/images/events_love.png"
+  },
+  {
+    "id": 2,
+    "title": "2024 곰들의 모임 안내🐻",
+    "user": "2024-11-19",
+    "img": "db/images/events_meeting.png"
+  }, 
+  {
+    "id": 3,
+    "title": "홈 경기 최종전 감사 이벤트",
+    "date": "2024-09-12",
+    "img": "db/images/events_fanFirst.png"
+  },
+  {
+    "id": 4,
+    "title": "망곰 베어스 DAY",
+    "date": "2024-09-11",
+    "img": "db/images/events_maggom.png"
+  },
+  {
+    "id": 5,
+    "title": "패밀리시리즈 추석 특별 이벤트 - 9/17(화) 외야 그라운드 체험 이벤트 신청",
+    "date": "2024-09-08",
+    "img": "db/images/events_family.png"
+  },
+  {
+    "id": 6,
+    "title": "정수빈 스페셜데이 안내",
+    "date": "2024-09-06",
+    "img": "db/images/events_soobin.png"
+  },
+  {
+    "id": 7,
+    "title": "니퍼트 은퇴식",
+    "date": "2024-09-06",
+    "img": "db/images/events_remember.png"
+  }
+]
