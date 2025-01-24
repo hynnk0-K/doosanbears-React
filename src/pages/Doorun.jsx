@@ -8,7 +8,8 @@ const Doorun = () => {
     const [activeTab, setActiveTab] = useState(0);
   
     useEffect(() => {
-      switch (location.pathname) {
+      switch (location.pathname) {  
+        
         case '/doorundoorun/notice':
           setActiveTab(0);
           break;
