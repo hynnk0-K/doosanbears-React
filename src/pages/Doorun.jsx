@@ -29,7 +29,7 @@ const Doorun = () => {
       <section>
         <ul className="tab" style={{paddingTop: "20px"}}>
           <li className={`${activeTab === 0 ? "on" : ""}`}><Link to="/doorundoorun/notice">공지사항</Link></li>
-          <li className={`${activeTab === 1 ? "on" : ""}`}><Link to="/doorundoorun/faq">FAQ</Link></li>
+          <li className={`${activeTab === 1 ? "on" : ""}`}><Link to="/doorundoorun/faq">팬 소식</Link></li>
           <li className={`${activeTab === 2 ? "on" : ""}`}><Link to="/doorundoorun/news">구단소식</Link></li>
         </ul>
       </section>

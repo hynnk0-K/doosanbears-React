@@ -49,7 +49,7 @@ const Events = () => {
           <ul className="list_box">
             {currentEvent.map(({ id, title, date }) => (
               <li key={id}>
-                <Link target="_self" className="pop_open" to={`/doorundoorun/event/${id}?currentPage=${currentPage}`}>
+                <Link target="_self" className="pop_open" to={`/event/events/${id}?currentPage=${currentPage}`}>
                   <div className="txt_area">
                     <p className="tit">{title}</p>
                     <p className="txt">{date}</p>

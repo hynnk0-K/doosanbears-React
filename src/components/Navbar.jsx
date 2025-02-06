@@ -123,7 +123,7 @@ const Navbar = () => {
                     <button onClick={toggleBottomActive}>두런두런</button>
                     <ul className="header_depth_2">
                       <li onClick={handleDimdClick}><Link to="/doorundoorun/notice">공지사항</Link></li>
-                      <li onClick={handleDimdClick}><Link to="/doorundoorun/faq">FAQ</Link></li>
+                      <li onClick={handleDimdClick}><Link to="/doorundoorun/faq">팬 소식</Link></li>
                       <li onClick={handleDimdClick}><Link to="/doorundoorun/news">구단소식</Link></li>
                     </ul>
                   </li>

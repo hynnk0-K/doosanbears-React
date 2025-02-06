@@ -176,6 +176,7 @@
               display: block;
               width: 100%;
               height: auto;
+              padding-bottom: 50px;
             }
             &:not(img){
               font-family: Pretendard, sans-serif;
@@ -183,6 +184,14 @@
               line-height: 1.6;
               color: var(--gray-30);
             }
+          }
+        }
+        .inner_text{
+          padding: 0 50px;
+          p{
+            color: var(--gray-20);
+            line-height: 1.25rem;
+            font-weight: 400;
           }
         }
       }
