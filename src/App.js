@@ -38,6 +38,7 @@ import News from "./components/Doorun/News";
 import NoticeDetail from "./components/Doorun/NoticeDetail";
 import FaqDetail from "./components/Doorun/FaqDetail";
 import EventsDetail from "./components/Event/EventsDetail";
+import FaqWrite from "./components/Doorun/FaqWrite";
 
 function App() {
   return (
@@ -84,6 +85,7 @@ function App() {
           <Route path="notice/:id" element={<NoticeDetail />}/>
           <Route path="faq" element={<Faq />}/>
           <Route path="faq/:id" element={<FaqDetail />}/>
+          <Route path="faq/write" element={<FaqWrite />}/>
           <Route path="news" element={<News />}/>
         </Route>
       </Routes>

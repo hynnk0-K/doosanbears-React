@@ -21,9 +21,20 @@ const Faq = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    fetch("/auth/status", { credentials: "include" }) // `credentials` 옵션 수정
+    const token = localStorage.getItem("accessToken"); // 저장된 토큰 가져오기
+
+    fetch("http://localhost:8080/auth/status", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`, // 헤더에 토큰 추가
+      },
+      credentials: "include",
+    })
       .then((res) => res.json())
-      .then((data) => setIsAuthenticated(data.isAuthenticated))
+      .then((data) => {
+        console.log("로그인 상태 확인:", data);
+        setIsAuthenticated(data.isAuthenticated);
+      })
       .catch((err) => console.error("인증 확인 중 오류 발생:", err));
   }, []);
 
@@ -79,6 +90,17 @@ const Faq = () => {
               </li>
             ))}
           </ul>
+          {isAuthenticated && (
+            <div className="write_btn_container">
+              <button
+                className="write_btn btn_bg bg_primary xlarge"
+                onClick={() => navigate("/doorundoorun/faq/write")}
+              >
+                글쓰기
+              </button>
+            </div>
+          )}
+
           <div className="pagination">
             <button
               className="first"

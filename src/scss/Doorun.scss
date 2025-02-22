@@ -65,6 +65,14 @@
             }
           }
         }
+        .write_btn_container{
+          .write_btn{
+            float: right;
+            margin-top: 20px;
+            padding: 10px;
+            font-size: .875rem;
+          }
+        }
         .pagination{
           display: flex;
           margin-top: 60px;
