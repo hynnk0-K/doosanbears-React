@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { API_URL } from "../../config/constants";
 import faqData from "../../data/faqData.json";
 
 const Faq = () => {
@@ -23,7 +24,7 @@ const Faq = () => {
   useEffect(() => {
     const token = localStorage.getItem("accessToken"); // 저장된 토큰 가져오기
 
-    fetch("http://localhost:8080/auth/status", {
+    fetch(`${API_URL}/auth/status`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`, // 헤더에 토큰 추가

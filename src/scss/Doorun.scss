@@ -279,3 +279,83 @@
   background: url(../images/ico_arrow.svg) no-repeat;
   background-size: contain;
 }
+
+//faq_write
+.faq_write{
+  .layout_fix{
+    padding: 0 50px;
+  .heading{
+    padding-top: 30px;
+    .tit{
+      font-size: 1.15rem;
+    }
+  }
+  .contents_container{
+    .conts_tit{
+      label.ant-form-item-:required::before{
+        font-size: 2rem;
+        color: var(--primary);
+       }
+      span.tit{
+        color: #fff;
+        font-size: 1rem;
+      }
+      .tit_cont{
+        font-size: 1rem;
+      }
+    }
+    .content{
+      span.tit{
+        color: #fff;
+        font-size: 1rem;
+      }
+      .content_text{
+        font-size: 1rem;
+      }
+    }
+    .content_img{
+      span.tit{
+        color: #fff;
+        font-size: 1rem;
+      }
+      .cont_img{
+        .upload_img1{}
+        .upload_img{
+          span.plus{
+            font-size: 14px;
+            color: #fff;
+            margin-bottom: 15px;
+          }
+          span{}
+        }
+      }
+    }
+    .submit_btn{
+      margin-top: 60px;
+    }
+  }
+}
+}
+
+//antd::before
+:where(.css-dev-only-do-not-override-1v613y0).ant-form-item .ant-form-item-label >label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+  display: inline-block;
+  margin-inline-end: 10px;
+  color: var(--primary);
+  font-size: 1.3rem;
+  line-height: 1;
+  content: "*";
+}
+
+//antd explain
+.ant-form-item-explain-error{
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 0.85rem;
+}
+
+//antd button
+:where(.css-dev-only-do-not-override-1v613y0).ant-btn-variant-outlined, :where(.css-dev-only-do-not-override-1v613y0).ant-btn-variant-dashed {
+  border-color: none;
+  background: #ffffff;
+}
