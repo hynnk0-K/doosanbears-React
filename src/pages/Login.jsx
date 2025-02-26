@@ -38,7 +38,7 @@ const Login = () => {
       setLoading(false);
     }
 
-    fetch("http://localhost:8080/users/login", {
+    fetch(`${API_URL}/users/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ user_id: userId, pw }),
