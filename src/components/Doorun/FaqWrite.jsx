@@ -6,8 +6,7 @@ import { Divider } from "antd";
 import { API_URL } from "../../config/constants";
 import { replace, useNavigate } from "react-router-dom";
 import TextArea from "antd/es/input/TextArea";
-import "antd/dist/reset.css"; // antd 스타일 초기화
-
+import { useAccessToken } from "../../components/AccessTokenContext"; // 토큰 관리 Context
 
 import "../../scss/Doorun.scss";
 import { message } from "antd";
@@ -16,12 +15,13 @@ const FaqWrite = () => {
   const [imageUrl, setImageUrl] = useState(null);
   const [userId, setUserId] = useState("");
   const navigate = useNavigate;
+  const { accessToken, user_id } = useAccessToken();
 
   const onFinish = (val) => {
     axios
-      .post(`${API_URL}/post`, {
+      .post(`${API_URL}/posts`, {
         title: val.title,
-        // user: user_id,
+        user: user_id,
         contents: val.contents,
         img: imageUrl,
       })
