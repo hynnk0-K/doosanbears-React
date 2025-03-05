@@ -37,7 +37,7 @@
               display: flex;
               align-items: center;  
               gap: 16px;
-              padding: 24px 0;
+              padding: 24px 12px;
               .txt_area{
                 flex: 1 1;
                 display: flex;
@@ -56,10 +56,12 @@
                 .txt{
                   font-family: Pretendard, sans-serif;
                   font-size: .875rem;
-                  display: flex;
                   flex-wrap: wrap;
                   gap: 12px;
                   color: var(--gray-40);
+                  .user{
+                    float: right;
+                  }
                 }
               }
             }
@@ -150,6 +152,12 @@
             .txt{
               display: flex;
               flex-wrap: wrap;
+              gap: 8px;
+              font-family: Pretendard, sans-serif;
+              font-size: 1rem;
+              color: var(--gray-40);
+            }
+            .user_date{
               gap: 8px;
               font-family: Pretendard, sans-serif;
               font-size: 1rem;

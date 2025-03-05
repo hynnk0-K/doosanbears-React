@@ -14,17 +14,23 @@ import { message } from "antd";
 const FaqWrite = () => {
   const [imageUrl, setImageUrl] = useState(null);
   const [userId, setUserId] = useState("");
-  const navigate = useNavigate;
+  const navigate = useNavigate();
   const { accessToken, user_id } = useAccessToken();
 
-  const onFinish = (val) => {
+  const onFinish = async (val) => {
+    console.log("user_id:", user_id)
+    const requestData = {
+      title: val.title,
+      user_id: user_id,  // 토큰에서 가져온 사용자 ID
+      date: new Date().toISOString().split("T")[0], // YYYY-MM-DD 형식
+      contents: val.contents,
+      img: imageUrl || "",
+    };
+  
+    console.log("보낼 데이터:", requestData);
+
     axios
-      .post(`${API_URL}/posts`, {
-        title: val.title,
-        user: user_id,
-        contents: val.contents,
-        img: imageUrl,
-      })
+      .post(`${API_URL}/posts`, requestData)
       .then((result) => {
         navigate("/doorundoorun/faq", { replace: true });
       })
@@ -52,7 +58,7 @@ const FaqWrite = () => {
         </div>
         <Form name="basic" onFinish={onFinish} className="contents_container">
           <Form.Item
-            name="tit" className="conts_tit"
+            name="title" className="conts_tit"
             label={<span className="tit" valuePropName="title">제목</span>}
             rules={[{required: true, message: "제목은 필수 입력사항입니다."}]}
           >
@@ -60,7 +66,7 @@ const FaqWrite = () => {
           </Form.Item>
           <Divider />
           <Form.Item 
-            name="content"
+            name="contents"
             className="content"
             label={<span className="tit">내용</span>}
             rules={[{required: true, message: "게시글 내용은 필수 입력사항입니다."}]}
